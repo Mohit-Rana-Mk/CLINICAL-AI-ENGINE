@@ -1,49 +1,56 @@
-# 🩺 AI Engine
+# 🩺 Clinical AI Engine
 
-An enterprise-grade Clinical AI Decision Support Engine designed for intelligent symptom analysis, emergency detection, patient risk assessment, and evidence-based clinical recommendations.
+An AI-powered **Clinical Decision Support System (CDSS)** that assists doctors and patients through symptom analysis, emergency detection, disease risk assessment, and explainable AI reasoning — with a roadmap toward LLM-based clinical intelligence.
 
-Built with a modular architecture to support future integration into hospitals, clinics, telemedicine platforms, and healthcare startups.
+Built with a modular architecture designed for future integration into hospitals, clinics, and telemedicine platforms.
 
----
-
-# 🚀 Current Status
-
-## ✅ Phase 1 — Backend Foundation (Completed)
-
-- FastAPI Project Structure
-- MySQL Database Integration
-- SQLAlchemy ORM
-- Alembic Database Migrations
-- Modular API Architecture
-- Patient Database Models
-- Repository Layer
-- Configuration Management
-- Logging
-- Security Utilities
+> ⚠️ **Status:** Active development. This is currently a rule-based clinical reasoning engine, not a clinically validated medical device. It has not undergone regulatory review (e.g., FDA/CE) and is not intended for unsupervised clinical use. See [Roadmap](#-future-roadmap) for what's still ahead.
 
 ---
 
-## ✅ Phase 2 — Clinical AI Core (Completed)
+## 📖 Project Overview
 
-The Clinical AI pipeline is fully functional.
+Clinical AI Engine analyzes patient-reported symptoms and structured medical history to produce:
 
-Implemented modules:
+- Extracted medical entities from free-text patient input
+- Emergency/red-flag detection
+- Risk-stratified clinical assessments
+- Explainable, evidence-oriented recommendations
+- Medication safety checks against patient history
+- A structured, auditable clinical summary
 
-- Patient Context Loader
-- Medical Entity Extraction
-- Emergency Detection Engine
-- Follow-up Question Generator
-- Clinical Risk Assessment
-- Recommendation Engine
-- Confidence Scoring
-- Medication Safety Checker
-- Explainability Engine
-- Clinical Summary Generator
-- Modular AI Orchestrator
+The system is built as a pipeline of independent, testable modules rather than a single monolithic model — every stage of reasoning is inspectable and explainable, which matters for anything touching healthcare.
 
 ---
 
-# 🧠 AI Pipeline
+## ✨ Features
+
+### Patient Intelligence
+- Patient context loading (history, medications, allergies)
+- Medical history retrieval
+- Allergy and contraindication detection
+
+### Clinical AI Pipeline
+- Medical entity extraction from natural language
+- Emergency detection engine
+- Follow-up question generation
+- Clinical risk assessment
+- Evidence-based recommendation engine
+- Medication safety checker
+- Explainability engine (shows *why* a conclusion was reached)
+- Clinical summary generator
+- Confidence scoring on every output
+
+### Platform
+- REST API with Swagger/OpenAPI documentation
+- Modular, service-oriented backend architecture
+- MySQL persistence via SQLAlchemy ORM
+- Version-controlled schema migrations (Alembic)
+- Unit test coverage across core AI modules
+
+---
+
+## 🏗️ Architecture
 
 ```
 Patient Message
@@ -58,16 +65,16 @@ Medical Entity Extraction
 Emergency Detection
         │
         ▼
-Follow-up Questions
+Follow-up Question Generator
         │
         ▼
-Risk Assessment
+Clinical Risk Assessment
         │
         ▼
 Recommendation Engine
         │
         ▼
-Medication Checker
+Medication Safety Checker
         │
         ▼
 Explainability Engine
@@ -76,115 +83,122 @@ Explainability Engine
 Clinical Summary Generator
         │
         ▼
-Confidence Engine
+Confidence Scoring
         │
         ▼
 Structured API Response
 ```
 
----
-
-# ⚙️ Tech Stack
-
-### Backend
-
-- Python 3.12
-- FastAPI
-- Pydantic v2
-- SQLAlchemy
-- Alembic
-
-### Database
-
-- MySQL 8
-
-### AI
-
-- Rule-based Clinical Reasoning
-- Modular AI Pipeline
-- Explainable AI
-- Risk Assessment Engine
-
-### Future Integrations
-
-- OpenAI GPT
-- LangGraph
-- LangChain
-- Qdrant Vector Database
-- Medical Knowledge Base
-- Clinical Guidelines
+Each stage is a discrete, independently testable module orchestrated by a central AI pipeline coordinator — this keeps clinical logic auditable and makes it possible to swap rule-based components for LLM-backed ones (Phase 4) without rewriting the pipeline.
 
 ---
 
-# 📂 Project Structure
+## ⚙️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | Python 3.12, FastAPI, Pydantic v2 |
+| Database | MySQL 8, SQLAlchemy, Alembic |
+| Frontend | React *(planned)* |
+| AI (current) | Rule-based clinical reasoning, explainable pipeline |
+| AI (planned) | OpenAI GPT, LangChain, LangGraph, Qdrant (vector DB) |
+| Testing | Pytest |
+
+---
+
+## 📂 Folder Structure
 
 ```
 backend/
-
 │
 ├── app/
-│   ├── ai_engine/
-│   ├── api/
-│   ├── core/
-│   ├── database/
-│   ├── models/
-│   ├── repositories/
-│   ├── schemas/
-│   └── services/
+│   ├── ai_engine/       # Clinical reasoning pipeline modules
+│   ├── api/             # FastAPI route definitions
+│   ├── core/            # Config, logging, security
+│   ├── database/        # DB session and connection handling
+│   ├── models/          # SQLAlchemy ORM models
+│   ├── repositories/     # Data access layer
+│   ├── schemas/         # Pydantic request/response schemas
+│   └── services/        # Business logic layer
 │
-├── alembic/
-├── tests/
+├── alembic/             # Database migrations
+├── tests/               # Unit tests
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-# ✨ Current Features
+## 🛠️ Installation
 
-## Patient Intelligence
+### Prerequisites
+- Python 3.12+
+- MySQL 8+
+- pip / virtualenv
 
-- Patient Context Loading
-- Medical History Retrieval
-- Medication Retrieval
-- Allergy Detection
-- Clinical Summary
+### Setup
 
----
+```bash
+# Clone the repository
+git clone https://github.com/Mohit-Rana-Mk/AI-ENGINE.git
+cd AI-ENGINE/backend
 
-## Clinical AI
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
 
-- Symptom Extraction
-- Emergency Detection
-- Risk Assessment
-- Follow-up Question Generation
-- Medication Safety Checking
-- Clinical Recommendations
-- Confidence Score
-- Explainable AI
+# Install dependencies
+pip install -r requirements.txt
 
----
+# Configure environment variables
+cp .env.example .env
+# Edit .env with your MySQL credentials and secrets
+```
 
-## Backend
+### Database Setup
 
-- REST APIs
-- Modular Architecture
-- MySQL Integration
-- ORM Models
-- Database Migrations
-- Logging
-- Clean Code Structure
+```bash
+# Run migrations
+alembic upgrade head
+```
 
 ---
 
-# 📌 API Endpoint
+## ▶️ Running the Backend
+
+```bash
+uvicorn app.main:app --reload
+```
+
+The API will be available at:
+
+```
+http://127.0.0.1:8000
+```
+
+Run the test suite:
+
+```bash
+pytest
+```
+
+---
+
+## 📌 API Documentation
+
+Interactive Swagger docs are auto-generated by FastAPI:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+### Core Endpoint
 
 ```
 POST /ai/analyze
 ```
 
-Example Request
-
+**Request:**
 ```json
 {
     "message": "I have chest pain and difficulty breathing.",
@@ -192,8 +206,7 @@ Example Request
 }
 ```
 
-Example Response
-
+**Response:**
 ```json
 {
     "status": "success",
@@ -212,118 +225,49 @@ Example Response
 
 ---
 
-# 🧪 Testing
+## 🛣️ Future Roadmap
 
-Current test coverage includes:
+### ✅ Phase 1 — Backend Foundation
+FastAPI structure, MySQL integration, ORM models, migrations, logging, security utilities.
 
-- Entity Extraction
-- Emergency Detection
-- Risk Assessment
-- Medication Checker
-- AI Pipeline
+### ✅ Phase 2 — Clinical AI Core
+Entity extraction, emergency detection, risk assessment, recommendation engine, medication checker, explainability engine, clinical summary, confidence scoring.
 
-Run tests
+### 🚧 Phase 3 — Advanced Clinical Reasoning *(In Progress)*
+- Clinical rule engine
+- AI triage engine
+- Disease probability engine
+- Differential diagnosis support
+- Structured response builder
+- Advanced NLP (negation, temporal extraction)
+- Medical knowledge base integration
 
-```bash
-pytest
-```
+### 📅 Phase 4 — LLM & Production Readiness
+- OpenAI GPT integration for clinical reasoning
+- Retrieval-Augmented Generation (RAG) pipeline
+- LangGraph-based multi-step clinical workflows
+- Qdrant vector database for medical knowledge retrieval
+- Clinical guideline integration (e.g., NICE, WHO)
+- Explainable AI dashboard for clinicians
+- Doctor-facing dashboard
+- Patient chat interface
+- React frontend
+- CI/CD pipeline and cloud deployment
 
----
-
-# 🛣️ Roadmap
-
-## ✅ Phase 1
-
-Backend Foundation
-
-✔ Completed
-
----
-
-## ✅ Phase 2
-
-Clinical AI Core
-
-✔ Completed
+> **Note:** Clinical validation, regulatory compliance review, and physician sign-off are required before this system is used in any real patient-facing or diagnostic capacity. This roadmap does not currently include that work as a scheduled phase — it should be treated as a prerequisite, not an afterthought, before any pilot deployment.
 
 ---
 
-## 🚧 Phase 3 (In Progress)
+## 👥 Team
 
-- Clinical Rule Engine
-- AI Triage Engine
-- Disease Probability Engine
-- Differential Diagnosis
-- Response Builder
-- Advanced NLP
-- Medical Knowledge Base
-
----
-
-## 📅 Future Phases
-
-- LLM Integration (OpenAI)
-- RAG Pipeline
-- LangGraph Workflow
-- Medical Vector Database
-- Clinical Guidelines Integration
-- Explainable AI Dashboard
-- Doctor Dashboard
-- Patient Chat Interface
-- React Frontend
-- Deployment
-- CI/CD Pipeline
-
----
-
-# 👥 Team
-
-## AI/ML Engineer
-**Mohit Kumar Rana**
-
-
-Responsibilities
-
-- AI Architecture
-- Clinical Decision Engine
-- Risk Assessment
-- AI Pipeline
-- Integration
-
----
-
-## AI/ML Engineer
-**Richa Roy**
-
-Responsibilities
-
-- NLP
-- Entity Extraction
-- Negation Detection
-- Temporal Extraction
-- Symptom Parsing
-
----
-
-## Data Analytics Engineer
-**Vemula Archita**
-
-Responsibilities
-
-- Medical Knowledge Base
-- Disease Database
-- Medication Database
-- Lab References
-- Repository Layer
-
----
-
-# 🎯 Vision
-
-To build a production-ready Clinical AI Decision Support System capable of assisting healthcare professionals with accurate, explainable, and evidence-based medical insights while maintaining a modular architecture suitable for real-world deployment.
+| Name | Role | Responsibilities |
+|---|---|---|
+| **Mohit Kumar Rana** | AI/ML Engineer | AI architecture, clinical decision engine, risk assessment, pipeline integration |
+| **Richa Roy** | AI/ML Engineer | NLP, entity extraction, negation detection, temporal extraction, symptom parsing |
+| **Vemula Archita** | Data Analytics Engineer | Medical knowledge base, disease database, medication database, lab references, repository layer |
 
 ---
 
 ## 📄 License
 
-This project is developed for educational, research, and healthcare innovation purposes.
+This project is developed for educational, research, and healthcare innovation purposes. It is **not certified as a medical device** and should not be used as a substitute for professional medical judgment.
