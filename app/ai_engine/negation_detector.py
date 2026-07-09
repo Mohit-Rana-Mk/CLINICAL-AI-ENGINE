@@ -65,7 +65,7 @@ class NegationDetector:
         text_lower = text.lower()
         symptom_lower = symptom.lower()
 
-        matches = list(re.finditer(re.escape(symptom_lower), text_lower))
+        matches = list(re.finditer(rf"(?<!\w){re.escape(symptom_lower)}(?!\w)", text_lower))
         
         if not matches:
             return False
