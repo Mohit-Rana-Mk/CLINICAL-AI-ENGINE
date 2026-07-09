@@ -20,11 +20,13 @@ class MedicalEntityExtractor:
         text_lower = text.lower()
         
         # 1. Extract Symptoms with Synonym Mapping and Negation Detection
+        from app.ai_engine.constants import COMMON_SYMPTOMS
+
         detected_symptoms = set()
-        
-        # Sort synonyms by length descending to match longest phrases first 
-        # (e.g., "shortness of breath" before "breath")
-        all_synonyms = sorted(self.synonym_mapper.synonym_to_canonical.keys(), key=len, reverse=True)
+
+        # Sort terms by length descending to match longest phrases first
+        all_terms = set(self.synonym_mapper.synonym_to_canonical.keys()) | set(COMMON_SYMPTOMS)
+        all_synonyms = sorted(all_terms, key=len, reverse=True)
         
         for syn in all_synonyms:
             pattern = rf"\b{re.escape(syn)}\b"
