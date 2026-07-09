@@ -1,5 +1,4 @@
 import re
-from typing import List
 
 from app.ai_engine.schemas import ExtractedEntities
 from app.ai_engine.negation_detector import NegationDetector
