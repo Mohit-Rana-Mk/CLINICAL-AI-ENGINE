@@ -44,3 +44,6 @@ alembic/versions/__pycache__/
 # Temporary
 *.tmp
 *.bak
+
+# Documentation folder
+documentation
