@@ -10,6 +10,8 @@ def load_document(file_path: str) -> str:
     """
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Could not find the file: {file_path}")
+    if not os.path.isfile(file_path):
+         raise IsADirectoryError(f"Expected a file path but got a directory: {file_path}")
 
     # Get the file extension and convert to lowercase
     _, file_extension = os.path.splitext(file_path)
@@ -50,18 +52,3 @@ def _extract_from_docx(file_path: str) -> str:
             full_text.append(paragraph.text)
     
     return "\n".join(full_text)
-
-
-if __name__ == "__main__":
-    # A quick test block to verify functionality
-    print("Testing document_loader module...")
-    
-    # Put a PDF file in your AI-ENGINE folder and name it 'sample_report.pdf'
-    test_file_path = "sample_report.pdf"
-    
-    try:
-        markdown_output = load_document(test_file_path)
-        print("\n--- EXTRACTED TEXT ---")
-        print(markdown_output)
-    except FileNotFoundError:
-        print(f"\nERROR: Could not find '{test_file_path}'. Please make sure you placed a PDF with that name in the main AI-ENGINE folder!")
