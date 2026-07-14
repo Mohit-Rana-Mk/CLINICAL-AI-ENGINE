@@ -16,7 +16,7 @@ class EmbeddingEngine:
     This module is intentionally independent of:
     - FastAPI
     - Clinical Pipeline
-    - Qdrant
+    - Vector Database
     - LLMs
 
     Responsibility:
@@ -26,6 +26,7 @@ class EmbeddingEngine:
     DEFAULT_MODEL = "all-MiniLM-L6-v2"
 
     def __init__(self, model_name: str | None = None):
+
         self.model_name = model_name or self.DEFAULT_MODEL
 
         logger.info(f"Loading embedding model: {self.model_name}")
@@ -37,12 +38,6 @@ class EmbeddingEngine:
     def embed_text(self, text: str) -> List[float]:
         """
         Generate embedding for a single text.
-
-        Args:
-            text: Input text
-
-        Returns:
-            List[float]
         """
 
         if not text.strip():
@@ -56,15 +51,18 @@ class EmbeddingEngine:
 
         return embedding.tolist()
 
+    def embed(self, text: str) -> List[float]:
+        """
+        Alias for embed_text().
+
+        Keeps compatibility with other modules that
+        call embedding_engine.embed(...).
+        """
+        return self.embed_text(text)
+
     def embed_batch(self, texts: List[str]) -> List[List[float]]:
         """
         Generate embeddings for multiple texts.
-
-        Args:
-            texts: List of text strings
-
-        Returns:
-            List[List[float]]
         """
 
         if not texts:
@@ -87,7 +85,7 @@ class EmbeddingEngine:
 
     def get_model_name(self) -> str:
         """
-        Returns currently loaded model.
+        Returns the currently loaded model.
         """
 
         return self.model_name

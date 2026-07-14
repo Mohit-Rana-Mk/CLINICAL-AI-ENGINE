@@ -1,0 +1,37 @@
+[
+    {
+        "id": "DOC001",
+        "title": "Chest Pain Emergency",
+        "category": "Emergency",
+        "source": "Clinical Guidelines",
+        "content": "Chest pain associated with breathing difficulty may indicate myocardial infarction, pulmonary embolism, or another life-threatening emergency. Immediate medical evaluation is recommended."
+    },
+    {
+        "id": "DOC002",
+        "title": "Fever Assessment",
+        "category": "Infection",
+        "source": "Clinical Guidelines",
+        "content": "Persistent fever lasting more than three days should be evaluated for infection, pneumonia, viral illness, or systemic disease depending on associated symptoms."
+    },
+    {
+        "id": "DOC003",
+        "title": "Headache Evaluation",
+        "category": "Neurology",
+        "source": "Clinical Guidelines",
+        "content": "Severe headache lasting more than one week may require neurological evaluation, especially when associated with vomiting, blurred vision, seizures, or weakness."
+    },
+    {
+        "id": "DOC004",
+        "title": "Diabetes Management",
+        "category": "Endocrinology",
+        "source": "Clinical Guidelines",
+        "content": "Patients with diabetes should regularly monitor blood glucose, maintain a healthy diet, exercise regularly, and adhere to prescribed medications."
+    },
+    {
+        "id": "DOC005",
+        "title": "Hypertension",
+        "category": "Cardiology",
+        "source": "Clinical Guidelines",
+        "content": "Patients with hypertension should monitor blood pressure regularly, reduce dietary sodium, maintain physical activity, and take antihypertensive medications as prescribed."
+    }
+]
