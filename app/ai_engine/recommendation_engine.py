@@ -1,75 +1,240 @@
 from app.ai_engine.schemas import Recommendation
 
 
+
 class RecommendationEngine:
 
-    def generate(self, risk):
 
-        if risk.overall_risk == "CRITICAL":
+    def generate(
+        self,
+        risk,
+        emergency=None,
+        entities=None
+    ) -> Recommendation:
+
+
+        symptoms = []
+
+
+        if entities:
+
+            symptoms = [
+                symptom.lower()
+                for symptom in entities.symptoms
+            ]
+
+
+
+        # =================================
+        # Emergency Case
+        # =================================
+
+        if (
+            risk.overall_risk == "CRITICAL"
+            or (
+                emergency
+                and emergency.is_emergency
+            )
+        ):
+
+
+            reasons = []
+
+
+            if "chest pain" in symptoms:
+
+                reasons.append(
+                    "Chest pain detected"
+                )
+
+
+            if "breathing difficulty" in symptoms:
+
+                reasons.append(
+                    "Breathing difficulty detected"
+                )
+
 
             return Recommendation(
-                immediate_action="Seek emergency medical care immediately.",
+
+                immediate_action=(
+                    "Emergency medical evaluation "
+                    "is required immediately."
+                ),
+
+
                 precautions=[
+
                     "Do not drive yourself.",
+
                     "Call emergency services.",
-                    "Stay with another person if possible."
+
+                    "Remain with another person if possible."
+
                 ],
+
+
                 monitoring=[
-                    "Monitor breathing.",
-                    "Monitor consciousness."
+
+                    "Monitor breathing status.",
+
+                    "Monitor consciousness level.",
+
+                    "Observe worsening symptoms."
+
                 ],
-                doctor_visit="Immediate Emergency Department",
+
+
+                doctor_visit=(
+                    "Emergency Department evaluation"
+                ),
+
+
                 lifestyle=[]
+
             )
+
+
+
+        # =================================
+        # High Risk
+        # =================================
 
         if risk.overall_risk == "HIGH":
 
+
             return Recommendation(
-                immediate_action="Consult a physician as soon as possible.",
+
+                immediate_action=(
+                    "Medical consultation recommended "
+                    "as soon as possible."
+                ),
+
+
                 precautions=[
-                    "Avoid strenuous activity.",
-                    "Take prescribed medicines only."
+
+                    "Avoid strenuous activities.",
+
+                    "Follow prescribed medications only."
+
                 ],
+
+
                 monitoring=[
-                    "Monitor symptoms every few hours."
+
+                    "Track symptom changes.",
+
+                    "Monitor vital signs if available."
+
                 ],
-                doctor_visit="Within 24 hours",
+
+
+                doctor_visit=(
+                    "Medical consultation within 24 hours"
+                ),
+
+
                 lifestyle=[
-                    "Stay hydrated",
-                    "Get adequate rest"
+
+                    "Maintain hydration.",
+
+                    "Take adequate rest."
+
                 ]
+
             )
+
+
+
+        # =================================
+        # Medium Risk
+        # =================================
 
         if risk.overall_risk == "MEDIUM":
 
+
             return Recommendation(
-                immediate_action="Schedule a medical consultation.",
+
+                immediate_action=(
+                    "Schedule a medical consultation."
+                ),
+
+
                 precautions=[
+
                     "Observe symptom progression."
+
                 ],
+
+
                 monitoring=[
-                    "Monitor temperature and symptoms."
+
+                    "Monitor symptoms regularly.",
+
+                    "Record any worsening signs."
+
                 ],
-                doctor_visit="Within 2–3 days",
+
+
+                doctor_visit=(
+                    "Consult physician within 2-3 days"
+                ),
+
+
                 lifestyle=[
-                    "Drink plenty of fluids",
-                    "Eat nutritious food",
-                    "Rest well"
+
+                    "Maintain balanced nutrition.",
+
+                    "Stay hydrated.",
+
+                    "Get adequate rest."
+
                 ]
+
             )
 
+
+
+        # =================================
+        # Low Risk
+        # =================================
+
         return Recommendation(
-            immediate_action="Continue self-care.",
+
+            immediate_action=(
+                "Continue monitoring symptoms "
+                "and maintain healthy habits."
+            ),
+
+
             precautions=[
-                "Follow healthy habits."
+
+                "Follow recommended precautions."
+
             ],
+
+
             monitoring=[
+
                 "Watch for worsening symptoms."
+
             ],
-            doctor_visit="Only if symptoms worsen",
+
+
+            doctor_visit=(
+                "Consult doctor if symptoms persist "
+                "or worsen."
+            ),
+
+
             lifestyle=[
-                "Exercise regularly",
-                "Sleep well",
-                "Stay hydrated"
+
+                "Exercise regularly.",
+
+                "Maintain healthy sleep.",
+
+                "Stay hydrated."
+
             ]
+
         )
