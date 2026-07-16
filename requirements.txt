@@ -70,3 +70,8 @@ faster-whisper
 pydub
 noisereduce
 scipy
+
+fasttext-wheel
+sentencepiece
+
+torch
