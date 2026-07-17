@@ -65,6 +65,8 @@ def preprocess_for_embeddings(text: str) -> str:
     Preprocesses text for embedding models by expanding medical abbreviations
     and standardizing units, while preserving the original casing of the text.
     """
+    if text is None:
+        return None
     if not text:
         return ""
 

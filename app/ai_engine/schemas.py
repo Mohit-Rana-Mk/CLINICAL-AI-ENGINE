@@ -44,6 +44,10 @@ class ExtractedEntities(BaseModel):
 
     lifestyle_factors: List[str] = []     # e.g. ["sedentary", "desk job", "no exercise"]
 
+    pregnancy_status: Optional[str] = None
+
+    occupation: Optional[str] = None
+
 class EmergencyAssessment(BaseModel):
     is_emergency: bool = False
 
