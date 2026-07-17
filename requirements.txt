@@ -66,6 +66,12 @@ xxhash==3.8.1
 zstandard==0.25.0
 pymupdf4llm==1.28.0
 python-docx==1.1.2
+<<<<<<< HEAD
+sentence-transformers
+qdrant-client
+langchain
+langgraph
+=======
 faster-whisper
 pydub
 noisereduce
@@ -82,3 +88,4 @@ spacy
 sentence-transformers
 cachetools
 indic-transliteration
+>>>>>>> origin/main

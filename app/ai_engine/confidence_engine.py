@@ -1,80 +1,191 @@
+import logging
+
 from app.ai_engine.schemas import ConfidenceResult
+
+logger = logging.getLogger(__name__)
 
 
 class ConfidenceEngine:
+    """
+    Production Confidence Engine.
+
+    Estimates confidence based on:
+
+    - Patient information completeness
+    - Symptom extraction quality
+    - Clinical risk assessment
+    - Emergency detection
+    - Retrieved medical evidence
+    """
+
+    MAX_CONFIDENCE = 95
+    BASE_CONFIDENCE = 45
 
     def calculate(
         self,
         patient_context,
         entities,
         emergency,
-        risk
-    ):
+        risk,
+        rag_documents=None,
+    ) -> ConfidenceResult:
 
-        score = 50
+        logger.info("Calculating confidence score")
 
+        confidence = self.BASE_CONFIDENCE
         reasons = []
 
-        # ------------------------
+        # =====================================
+        # Normalize Emergency
+        # =====================================
+
+        emergency_status = (
+            emergency.get("is_emergency", False)
+            if isinstance(emergency, dict)
+            else getattr(emergency, "is_emergency", False)
+        )
+
+        # =====================================
+        # Normalize Risk
+        # =====================================
+
+        if isinstance(risk, dict):
+            risk_score = risk.get("risk_score")
+            risk_factors = risk.get("risk_factors", [])
+        else:
+            risk_score = getattr(risk, "risk_score", None)
+            risk_factors = getattr(risk, "risk_factors", [])
+
+        # =====================================
+        # Symptoms
+        # =====================================
 
         if entities.symptoms:
-            score += 15
-            reasons.append("Symptoms identified")
+            confidence += 15
+            reasons.append(
+                "Clinical symptoms identified from patient input"
+            )
+        else:
+            reasons.append(
+                "Insufficient symptom information"
+            )
 
-        # ------------------------
+        # =====================================
+        # Patient Context
+        # =====================================
 
         if patient_context.age is not None:
-            score += 10
+            confidence += 5
             reasons.append("Patient age available")
 
-        # ------------------------
-
         if patient_context.gender:
-            score += 5
+            confidence += 5
             reasons.append("Patient gender available")
 
-        # ------------------------
-
         if patient_context.medical_history:
-            score += 10
+            confidence += 10
             reasons.append("Medical history available")
 
-        # ------------------------
-
         if patient_context.medications:
-            score += 5
+            confidence += 5
             reasons.append("Medication history available")
 
-        # ------------------------
-
         if patient_context.allergies:
-            score += 5
-            reasons.append("Allergy history available")
+            confidence += 5
+            reasons.append("Allergy information available")
 
-        # ------------------------
+        if patient_context.vitals:
+            confidence += 5
+            reasons.append("Vital signs available")
 
-        if emergency.is_emergency:
-            score += 10
-            reasons.append("Emergency rule matched")
+        if patient_context.lab_reports:
+            confidence += 5
+            reasons.append("Laboratory data available")
 
-        # ------------------------
+        # =====================================
+        # Emergency Detection
+        # =====================================
 
-        score = min(score, 100)
+        if emergency_status:
+            confidence += 10
+            reasons.append(
+                "Emergency pattern detected from clinical rules"
+            )
 
-        if score >= 90:
-            level = "Very High"
+        # =====================================
+        # Risk Assessment
+        # =====================================
 
-        elif score >= 75:
+        if risk_score is not None:
+            confidence += 10
+            reasons.append(
+                "Risk assessment generated successfully"
+            )
+
+        if risk_factors:
+            confidence += 5
+            reasons.append(
+                "Clinical risk factors identified"
+            )
+
+        # =====================================
+        # Retrieved Evidence
+        # =====================================
+
+        if rag_documents:
+            confidence += 5
+            reasons.append(
+                "Clinical evidence retrieved from medical knowledge base"
+            )
+
+        # =====================================
+        # Missing Information
+        # =====================================
+
+        missing = []
+
+        if not entities.duration:
+            missing.append("symptom duration")
+
+        if not entities.severity:
+            missing.append("symptom severity")
+
+        if not entities.associated_symptoms:
+            missing.append("associated symptoms")
+
+        if missing:
+            confidence -= 10
+            reasons.append(
+                "Missing clinical details: "
+                + ", ".join(missing)
+            )
+
+        # =====================================
+        # Final Calibration
+        # =====================================
+
+        confidence = max(
+            0,
+            min(confidence, self.MAX_CONFIDENCE),
+        )
+
+        if confidence >= 85:
             level = "High"
-
-        elif score >= 60:
-            level = "Medium"
-
-        else:
+        elif confidence >= 70:
+            level = "Moderate"
+        elif confidence >= 50:
             level = "Low"
+        else:
+            level = "Very Low"
+
+        logger.info(
+            "Confidence calculated (%d%% - %s)",
+            confidence,
+            level,
+        )
 
         return ConfidenceResult(
-            confidence_score=score,
+            confidence_score=confidence,
             confidence_level=level,
-           reasons=reasons
+            reasons=reasons,
         )
