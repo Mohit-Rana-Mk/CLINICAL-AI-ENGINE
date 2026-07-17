@@ -50,7 +50,7 @@ class LocalTranslator:
         # Target language is always English (eng_Latn)
         translated_tokens = self.model.generate(
             **inputs, 
-            forced_bos_token_id=self.tokenizer.lang_code_to_id["eng_Latn"],
+            forced_bos_token_id=self.tokenizer.convert_tokens_to_ids("eng_Latn"),
             max_length=512
         )
         

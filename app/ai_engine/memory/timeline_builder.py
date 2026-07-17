@@ -77,7 +77,10 @@ class TimelineBuilder:
                         "last_updated"
                     ),
                     "event_type": "recommendation",
-                    "description": recommendation,
+                    "description": (
+                        f"{recommendation.immediate_action}. "
+                        f"Doctor Visit: {recommendation.doctor_visit}"
+                    )
                 }
             )
 
