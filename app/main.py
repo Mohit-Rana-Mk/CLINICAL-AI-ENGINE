@@ -6,6 +6,7 @@ from pydantic import BaseModel
 from app.database.connection import engine
 from app.ai_engine.orchestrator import ClinicalAIEngine
 from app.schemas.ai_response import AIResponse
+from app.api.routes import nlp as nlp_router
 
 import logging
 
@@ -15,6 +16,9 @@ app = FastAPI(
     title="Clinical AI Engine",
     version="1.0.0"
 )
+
+# ── NLP Engine Routes (Richa's pipeline) ──────────────────────────────────────
+app.include_router(nlp_router.router)
 
 ai_engine = ClinicalAIEngine()
 
