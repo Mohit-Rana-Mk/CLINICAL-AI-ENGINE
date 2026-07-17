@@ -75,3 +75,6 @@ fasttext-wheel
 sentencepiece
 
 torch
+paddleocr
+paddlepaddle
+PyMuPDF
