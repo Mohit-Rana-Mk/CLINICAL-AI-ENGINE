@@ -345,6 +345,7 @@ class ClinicalPipeline:
 
             response["pipeline"] = {
                 "version": "2.0",
+                "engine": "Clinical AI Engine",
                 "steps_completed": 15,
                 "execution_time_seconds": round(
                     time.perf_counter() - start,
