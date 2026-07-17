@@ -95,6 +95,18 @@ class MedicalEntityExtractor:
         # ── 9. Day 7: Lifestyle Factors ───────────────────────────────────
         lifestyle_factors = self.lifestyle_extractor.extract(text)
 
+        # ── 10. Extract Pregnancy Status ──────────────────────────────────
+        pregnancy_status = None
+        pregnancy_match = re.search(r"\b(pregnant|pregnancy|expecting|trimester|\d+\s*(?:weeks|months)\s*pregnant)\b", text_lower)
+        if pregnancy_match:
+            pregnancy_status = pregnancy_match.group(1)
+
+        # ── 11. Extract Occupation ────────────────────────────────────────
+        occupation = None
+        occupation_match = re.search(r"\b(?:work as a|job is|i am a|profession is|working as a)\s+([a-zA-Z\s]+?)(?:\.|and|but|,|$)", text_lower)
+        if occupation_match:
+            occupation = occupation_match.group(1).strip()
+
         return ExtractedEntities(
             symptoms=list(detected_symptoms),
             duration=duration,
@@ -106,4 +118,6 @@ class MedicalEntityExtractor:
             alcohol_use=alcohol_use,
             travel_history=travel_history,
             lifestyle_factors=lifestyle_factors,
+            pregnancy_status=pregnancy_status,
+            occupation=occupation,
         )
