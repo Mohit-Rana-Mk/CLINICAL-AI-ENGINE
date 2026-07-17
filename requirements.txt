@@ -78,3 +78,5 @@ torch
 paddleocr
 paddlepaddle
 PyMuPDF
+spacy
+sentence-transformers
