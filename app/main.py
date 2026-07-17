@@ -8,6 +8,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from app.ai_engine.orchestrator import ClinicalAIEngine
 from app.database.connection import engine
 from app.schemas.ai_response import AIResponse
+from app.api.routes import nlp as nlp_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -38,6 +39,9 @@ Features
     docs_url="/docs",
     redoc_url="/redoc",
 )
+
+# ── NLP Engine Routes (Richa's pipeline) ──────────────────────────────────────
+app.include_router(nlp_router.router)
 
 ai_engine = ClinicalAIEngine()
 

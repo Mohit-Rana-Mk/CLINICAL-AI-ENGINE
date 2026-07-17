@@ -47,3 +47,12 @@ alembic/versions/__pycache__/
 
 # Documentation folder
 documentation
+
+# ML Models (large binary files - download on first run)
+app/rag/models/
+*.bin
+*.ftz
+
+# Sample files
+sample_report.pdf
+run_on_report.py

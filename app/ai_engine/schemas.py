@@ -49,6 +49,21 @@ class ExtractedEntities(BaseModel):
 # Emergency
 # ==========================================================
 
+    # --- Day 7 additions ---
+    family_history: List[str] = []
+
+    smoking_status: Optional[str] = None  # e.g. "current smoker", "ex-smoker", "non-smoker"
+
+    alcohol_use: Optional[str] = None     # e.g. "occasional drinker", "heavy drinker", "non-drinker"
+
+    travel_history: List[str] = []        # e.g. ["Rajasthan", "Delhi"]
+
+    lifestyle_factors: List[str] = []     # e.g. ["sedentary", "desk job", "no exercise"]
+
+    pregnancy_status: Optional[str] = None
+
+    occupation: Optional[str] = None
+
 class EmergencyAssessment(BaseModel):
 
     is_emergency: bool = False
