@@ -1,15 +1,18 @@
 import logging
 from datetime import datetime
 
-
 logger = logging.getLogger(__name__)
 
 
 class ResponseBuilder:
     """
-    Converts internal Clinical AI pipeline
-    objects into a production-ready API response.
+    Production Response Builder.
+
+    Converts all internal AI engine outputs into
+    the final standardized API response.
     """
+
+    ENGINE_VERSION = "1.0.0"
 
     def _serialize(self, value):
 
@@ -21,8 +24,8 @@ class ResponseBuilder:
 
         if isinstance(value, dict):
             return {
-                key: self._serialize(val)
-                for key, val in value.items()
+                k: self._serialize(v)
+                for k, v in value.items()
             }
 
         if isinstance(value, list):
@@ -35,58 +38,48 @@ class ResponseBuilder:
 
     def build(
         self,
+        *,
         patient_context,
         entities,
-        agents=None,
-        risk=None,
-        explanation=None,
-        summary=None,
-        confidence=None,
-        rag_result=None,
-        agent_result=None,
+        agents,
+        risk,
+        explanation,
+        summary,
+        confidence,
+        rag_result,
+        follow_up=None,
     ):
 
         logger.info(
-            "Building final clinical response"
+            "Building final API response"
         )
 
-        if agents is None:
-            agents = agent_result or {}
+        documents = []
 
-        if rag_result is None:
-            rag_result = {}
+        for doc in rag_result.get(
+            "documents",
+            [],
+        ):
 
-        # ----------------------------------------
-        # RAG Documents
-        # ----------------------------------------
+            if hasattr(doc, "document"):
 
-        rag_documents = []
+                documents.append(
+                    {
+                        "title": doc.document.title,
+                        "category": doc.document.category,
+                        "source": doc.document.source,
+                        "similarity_score": round(
+                            doc.similarity_score,
+                            3,
+                        ),
+                    }
+                )
 
-        for doc in rag_result.get("documents", []):
+            else:
 
-            rag_documents.append(
-                {
-                    "title": doc.document.title,
-                    "category": doc.document.category,
-                    "source": doc.document.source,
-                    "similarity_score": round(
-                        doc.similarity_score,
-                        3,
-                    ),
-                }
-            )
-
-        emergency = agents.get(
-            "emergency_analysis"
-        )
-
-        recommendation = agents.get(
-            "recommendation_analysis"
-        )
-
-        medication = agents.get(
-            "medication_analysis"
-        )
+                documents.append(
+                    self._serialize(doc)
+                )
 
         response = {
 
@@ -95,8 +88,11 @@ class ResponseBuilder:
             "timestamp": datetime.utcnow().isoformat(),
 
             "pipeline": {
-                "version": "1.0.0",
+
                 "engine": "Clinical AI Engine",
+
+                "version": self.ENGINE_VERSION,
+
             },
 
             "patient_context":
@@ -109,24 +105,34 @@ class ResponseBuilder:
                     entities
                 ),
 
-            "agents":
-                self._serialize(
-                    {
-                        "symptom_analysis":
-                            agents.get(
-                                "symptom_analysis"
-                            ),
+            "agents": {
 
-                        "diagnosis_analysis":
-                            agents.get(
-                                "diagnosis_analysis"
-                            ),
-                    }
-                ),
+                "symptom_analysis":
+                    self._serialize(
+                        agents.get(
+                            "symptom_analysis"
+                        )
+                    ),
+
+                "diagnosis_analysis":
+                    self._serialize(
+                        agents.get(
+                            "diagnosis_analysis"
+                        )
+                    ),
+
+            },
 
             "emergency":
                 self._serialize(
-                    emergency
+                    agents.get(
+                        "emergency_analysis"
+                    )
+                ),
+
+            "follow_up_questions":
+                self._serialize(
+                    follow_up
                 ),
 
             "risk_assessment":
@@ -136,22 +142,26 @@ class ResponseBuilder:
 
             "recommendation":
                 self._serialize(
-                    recommendation
+                    agents.get(
+                        "recommendation_analysis"
+                    )
                 ),
 
             "medication_alerts":
                 self._serialize(
-                    medication
-                ),
-
-            "clinical_summary":
-                self._serialize(
-                    summary
+                    agents.get(
+                        "medication_analysis"
+                    )
                 ),
 
             "explanation":
                 self._serialize(
                     explanation
+                ),
+
+            "clinical_summary":
+                self._serialize(
+                    summary
                 ),
 
             "confidence":
@@ -161,21 +171,28 @@ class ResponseBuilder:
 
             "rag": {
 
-                "documents":
-                    rag_documents,
+                "documents": documents,
 
                 "citations":
-                    rag_result.get(
-                        "citations",
-                        []
+                    self._serialize(
+                        rag_result.get(
+                            "citations",
+                            [],
+                        )
                     ),
 
                 "metadata":
-                    rag_result.get(
-                        "metadata",
-                        {}
+                    self._serialize(
+                        rag_result.get(
+                            "metadata",
+                            {},
+                        )
                     ),
             },
         }
+
+        logger.info(
+            "Response built successfully"
+        )
 
         return response

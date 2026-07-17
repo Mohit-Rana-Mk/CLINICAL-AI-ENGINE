@@ -19,29 +19,20 @@ logger = logging.getLogger(__name__)
 app = FastAPI(
     title="Clinical AI Engine",
     description="""
-Production-ready Clinical Decision Support System.
+Production-ready Clinical Decision Support System
 
 Features
-
-• Patient Context Intelligence
-
-• Medical Entity Extraction
-
-• Retrieval-Augmented Generation (RAG)
-
-• Multi-Agent Clinical Reasoning
-
-• Emergency Detection
-
-• Clinical Risk Assessment
-
-• Medication Safety Checks
-
-• Explainable AI
-
-• Clinical Summary Generation
-
-• Confidence Scoring
+- Patient Context Intelligence
+- Medical Entity Extraction
+- Retrieval-Augmented Generation (RAG)
+- Multi-Agent Clinical Reasoning
+- Emergency Detection
+- Risk Assessment
+- Medication Safety
+- Explainable AI
+- Clinical Summary
+- Confidence Scoring
+- Multimodal Input Support
 """,
     version="1.0.0",
     docs_url="/docs",
@@ -52,17 +43,20 @@ ai_engine = ClinicalAIEngine()
 
 
 class ChatRequest(BaseModel):
-    message: str = Field(
-        ...,
-        min_length=1,
-        description="Patient clinical message",
+
+    message: str | None = Field(
+        default=None,
+        description="Clinical message",
     )
 
     patient_id: int | None = Field(
         default=None,
         ge=1,
-        description="Patient identifier",
     )
+
+    file_name: str | None = None
+
+    mime_type: str | None = None
 
 
 @app.get("/")
@@ -72,16 +66,14 @@ def home():
         "status": "success",
         "service": "Clinical AI Engine",
         "version": "1.0.0",
-        "message": "Clinical AI Engine is running.",
     }
 
 
 @app.get("/ready")
-def readiness():
+def ready():
 
     return {
         "status": "ready",
-        "service": "Clinical AI Engine",
     }
 
 
@@ -96,26 +88,24 @@ def health():
         return {
             "status": "healthy",
             "database": "connected",
-            "ai_engine": "ready",
+            "engine": "ready",
         }
 
     except SQLAlchemyError as error:
 
-        logger.exception("Database health check failed")
+        logger.exception("Health check failed")
 
         raise HTTPException(
             status_code=500,
-            detail=f"Database Error: {str(error)}",
+            detail=str(error),
         )
 
 
 @app.get("/ai/test")
 def ai_test():
 
-    logger.info("Running AI test endpoint")
-
     return ai_engine.process(
-        message="fever and cough",
+        message="Patient has fever and cough for 3 days",
         patient_id=1,
     )
 
@@ -124,45 +114,40 @@ def ai_test():
     "/ai/analyze",
     response_model=AIResponse,
 )
-def analyze(req: ChatRequest):
+def analyze(request: ChatRequest):
 
-    if not req.message.strip():
+    if (
+        not request.message
+        and not request.file_name
+    ):
 
         raise HTTPException(
             status_code=400,
-            detail="Clinical message cannot be empty.",
+            detail="Either message or file is required.",
         )
 
     logger.info(
-        "Received AI request | patient_id=%s",
-        req.patient_id,
+        "Received Clinical AI Request"
     )
 
     try:
 
         result = ai_engine.process(
-            message=req.message.strip(),
-            patient_id=req.patient_id,
+            message=request.message,
+            patient_id=request.patient_id,
+            file_name=request.file_name,
+            mime_type=request.mime_type,
         )
 
         if result.get("status") == "error":
-
-            logger.error(
-                "Pipeline returned error | patient_id=%s",
-                req.patient_id,
-            )
 
             raise HTTPException(
                 status_code=500,
                 detail=result.get(
                     "message",
-                    "Clinical AI pipeline failed.",
+                    "Clinical AI failed.",
                 ),
             )
-
-        logger.info(
-            "Clinical AI pipeline completed successfully"
-        )
 
         return result
 
@@ -172,8 +157,7 @@ def analyze(req: ChatRequest):
     except Exception as error:
 
         logger.exception(
-            "Unexpected Clinical AI failure | patient_id=%s",
-            req.patient_id,
+            "Clinical AI failed"
         )
 
         raise HTTPException(

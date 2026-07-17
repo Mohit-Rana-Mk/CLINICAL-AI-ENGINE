@@ -1,12 +1,21 @@
+import logging
+
 from app.ai_engine.schemas import FollowUpQuestions
+
+logger = logging.getLogger(__name__)
 
 
 class FollowUpEngine:
     """
     Production Follow-up Question Engine.
 
-    Generates clinically relevant follow-up questions
-    based on detected symptoms while avoiding duplicates.
+    Generates intelligent follow-up questions using:
+
+    - Symptom specific questions
+    - Emergency questions
+    - Risk clarification
+    - Missing clinical information
+    - Priority ordering
     """
 
     def __init__(self):
@@ -85,46 +94,156 @@ class FollowUpEngine:
             ],
         }
 
-    def generate(self, symptoms: list[str]) -> FollowUpQuestions:
+        self.general_questions = [
+            "When did your symptoms first begin?",
+            "Have your symptoms become better, worse, or stayed the same?",
+            "Have you experienced these symptoms before?",
+            "Have you taken any medication for these symptoms?",
+            "Do you have any chronic medical conditions?",
+            "Are you currently taking any prescription medicines?",
+            "Do you have any known allergies?",
+        ]
+
+    def generate(
+        self,
+        symptoms: list[str],
+        patient_context=None,
+        emergency=None,
+        risk=None,
+        rag_documents=None,
+    ) -> FollowUpQuestions:
+
+        logger.info("Generating follow-up questions")
 
         symptom_set = {
             symptom.lower().strip()
             for symptom in symptoms
+            if symptom
         }
 
+        priority_questions = []
         questions = []
 
         # -----------------------------------------
-        # Symptom-specific Questions
+        # Symptom Questions
         # -----------------------------------------
 
         for symptom in sorted(symptom_set):
 
             questions.extend(
-                self.question_bank.get(symptom, [])
+                self.question_bank.get(
+                    symptom,
+                    [],
+                )
             )
 
         # -----------------------------------------
-        # Generic Clinical Questions
+        # Emergency Questions
+        # -----------------------------------------
+
+        emergency_flag = False
+
+        if isinstance(emergency, dict):
+            emergency_flag = emergency.get(
+                "is_emergency",
+                False,
+            )
+        elif emergency is not None:
+            emergency_flag = getattr(
+                emergency,
+                "is_emergency",
+                False,
+            )
+
+        if emergency_flag:
+
+            priority_questions.extend([
+                "Are your symptoms getting worse right now?",
+                "Can you safely reach the nearest emergency department?",
+                "Is someone with you at the moment?",
+            ])
+
+        # -----------------------------------------
+        # Risk Questions
+        # -----------------------------------------
+
+        risk_score = None
+
+        if isinstance(risk, dict):
+            risk_score = risk.get("risk_score")
+        elif risk is not None:
+            risk_score = getattr(
+                risk,
+                "risk_score",
+                None,
+            )
+
+        if risk_score is not None and risk_score >= 70:
+
+            priority_questions.extend([
+                "Have you experienced similar symptoms previously?",
+                "Have these symptoms rapidly worsened today?",
+            ])
+
+        # -----------------------------------------
+        # Missing Context
+        # -----------------------------------------
+
+        if patient_context:
+
+            if getattr(patient_context, "medical_history", None) == []:
+
+                questions.append(
+                    "Do you have any significant past medical history?"
+                )
+
+            if getattr(patient_context, "medications", None) == []:
+
+                questions.append(
+                    "Are you currently taking any medications?"
+                )
+
+            if getattr(patient_context, "allergies", None) == []:
+
+                questions.append(
+                    "Do you have any medication or food allergies?"
+                )
+
+        # -----------------------------------------
+        # Evidence Questions
+        # -----------------------------------------
+
+        if rag_documents:
+
+            questions.append(
+                "Have these symptoms been evaluated by a healthcare professional before?"
+            )
+
+        # -----------------------------------------
+        # General Questions
         # -----------------------------------------
 
         if symptom_set:
 
-            questions.extend([
-                "When did your symptoms first begin?",
-                "Have your symptoms become better, worse, or stayed the same?",
-                "Have you experienced these symptoms before?",
-                "Have you taken any medication for these symptoms?",
-            ])
+            questions.extend(
+                self.general_questions
+            )
 
         # -----------------------------------------
         # Remove Duplicates
         # -----------------------------------------
 
-        unique_questions = list(
-            dict.fromkeys(questions)
+        final_questions = list(
+            dict.fromkeys(
+                priority_questions + questions
+            )
+        )
+
+        logger.info(
+            "Generated %d follow-up questions",
+            len(final_questions),
         )
 
         return FollowUpQuestions(
-            questions=unique_questions
+            questions=final_questions
         )
