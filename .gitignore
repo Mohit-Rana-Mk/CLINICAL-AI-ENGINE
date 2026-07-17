@@ -56,3 +56,4 @@ app/rag/models/
 # Sample files
 sample_report.pdf
 run_on_report.py
+demo_all.bat
