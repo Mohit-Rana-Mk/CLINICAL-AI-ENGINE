@@ -18,7 +18,7 @@ class SymptomLinker:
         """
         logger.debug("Linking symptoms to body parts")
         linked_results = []
-        doc = self.nlp(text.lower())
+        text_lower = text.lower()
         
         # Simple heuristic: for each symptom, find the closest body part in the text
         # In a more advanced implementation, we would use dependency paths.
@@ -28,12 +28,12 @@ class SymptomLinker:
             min_dist = float('inf')
             
             # Find index of symptom
-            symptom_idx = text.lower().find(symptom_lower)
+            symptom_idx = text_lower.find(symptom_lower)
             
             if symptom_idx != -1:
                 for part_obj in body_parts:
                     part_str = part_obj["linked_part"]
-                    part_idx = text.lower().find(part_str)
+                    part_idx = text_lower.find(part_str)
                     
                     if part_idx != -1:
                         # Calculate character distance

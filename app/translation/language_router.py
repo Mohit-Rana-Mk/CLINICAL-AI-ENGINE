@@ -35,49 +35,13 @@ class TranslationRouter:
         
         # 2. Route for translation if not English
         if lang_code == "en":
-            # Check for potential Hinglish (English alphabet but Hindi words)
-            # A simple heuristic: if fasttext says 'en' but we want to handle Hinglish
-            # we will process chunks. For now, if the user explicitly triggers Hinglish
-            # or if we detect mixed text. We will assume the text might be mixed.
+            # Handle potential Hinglish (English script with Hindi words)
             english_text = self._process_mixed_language(text)
             translated = english_text != text
         else:
-            # Direct translation for purely foreign scripts
+            # Direct translation for purely foreign scripts (e.g., Devanagari)
             english_text = self.translator.translate(text, source_lang_code=lang_code)
             translated = True
-            
-    def _process_mixed_language(self, text: str) -> str:
-        """
-        Chunks the sentence, transliterates Hinglish to Devanagari,
-        and translates the Hindi chunks while keeping English chunks.
-        """
-        try:
-            from indic_transliteration import sanscript
-            from indic_transliteration.sanscript import transliterate
-            import spacy
-            
-            # Simple chunking by words for the prototype
-            words = text.split()
-            processed_chunks = []
-            
-            for word in words:
-                # Detect language of the word
-                det = self.detector.detect_language(word)
-                if det.get("language") in ["hi", "ur", "mr"] or word.lower() in ["mujhe", "hai", "dard", "bukhar", "aur", "khansi", "se"]:
-                    # It's likely phonetic Hindi, transliterate it
-                    # ITRANS or HK format is typical, but we'll use a simple transliteration
-                    devanagari = transliterate(word, sanscript.ITRANS, sanscript.DEVANAGARI)
-                    # Translate the Devanagari back to English
-                    eng_word = self.translator.translate(devanagari, source_lang_code="hi")
-                    processed_chunks.append(eng_word)
-                else:
-                    # Keep English as-is
-                    processed_chunks.append(word)
-                    
-            return " ".join(processed_chunks)
-        except ImportError:
-            logger.warning("indic-transliteration or spacy not installed. Returning original text.")
-            return text
             
         # 3. Normalize literal translations to medical terms
         normalized_text = self.normalizer.normalize(english_text)
@@ -89,3 +53,30 @@ class TranslationRouter:
             "was_translated": translated,
             "english_text": normalized_text
         }
+
+    def _process_mixed_language(self, text: str) -> str:
+        """
+        Chunks the sentence, transliterates Hinglish to Devanagari,
+        and translates the Hindi chunks while keeping English chunks as-is.
+        """
+        try:
+            from indic_transliteration import sanscript
+            from indic_transliteration.sanscript import transliterate
+            
+            words = text.split()
+            processed_chunks = []
+            
+            for word in words:
+                det = self.detector.detect_language(word)
+                if det.get("language") in ["hi", "ur", "mr"] or word.lower() in ["mujhe", "hai", "dard", "bukhar", "aur", "khansi", "se"]:
+                    # Transliterate phonetic Hindi to Devanagari, then translate to English
+                    devanagari = transliterate(word, sanscript.ITRANS, sanscript.DEVANAGARI)
+                    eng_word = self.translator.translate(devanagari, source_lang_code="hi")
+                    processed_chunks.append(eng_word)
+                else:
+                    processed_chunks.append(word)
+                    
+            return " ".join(processed_chunks)
+        except ImportError:
+            logger.warning("indic-transliteration not installed. Returning original text.")
+            return text

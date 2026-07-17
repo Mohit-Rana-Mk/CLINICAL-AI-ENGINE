@@ -18,13 +18,14 @@ class FollowupEngine:
         
         # Retrieve past context if this is a multi-turn conversation
         past_context = self.session_memory.get(session_id, {
-            "symptoms": set(),
+            "symptoms": [],
             "history": []
         })
         
-        # Update past context with new symptoms
+        # Update past context with new symptoms (avoid duplicates using set logic)
         current_symptoms = set(payload.get("symptoms", []))
-        past_context["symptoms"].update(current_symptoms)
+        existing = set(past_context["symptoms"])
+        past_context["symptoms"] = list(existing.union(current_symptoms))
         
         # Determine followup
         intent = payload.get("intent", "")

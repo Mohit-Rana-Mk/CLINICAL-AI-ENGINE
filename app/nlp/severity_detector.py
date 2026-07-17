@@ -20,7 +20,7 @@ SEVERITY_KEYWORDS = {
     ],
     Severity.MEDIUM: [
         r"\bmoderate\b", r"\bfever\b", r"\bpain\b", r"\bachy\b", r"\bthrowing\s+up\b",
-        r"\bvomiting\b", r"\bdiahrrea\b"
+        r"\bvomiting\b", r"\bdiarrhea\b"
     ],
     Severity.LOW: [
         r"\bmild\b", r"\bslight\b", r"\blittle\b", r"\bcold\b", r"\bcheckup\b", r"\bdiet\b",
