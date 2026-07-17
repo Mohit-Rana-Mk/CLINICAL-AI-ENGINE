@@ -80,3 +80,5 @@ paddlepaddle
 PyMuPDF
 spacy
 sentence-transformers
+cachetools
+indic-transliteration

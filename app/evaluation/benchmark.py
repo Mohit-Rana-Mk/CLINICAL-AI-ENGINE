@@ -70,6 +70,21 @@ def run_benchmark():
     }
     
     logger.info(f"Benchmark Report:\n{json.dumps(report, indent=2)}")
+    
+    # Run an End-to-End Test via pipeline.py
+    logger.info("Running End-to-End Pipeline Integration Test...")
+    from app.pipeline import get_clinical_pipeline
+    pipeline = get_clinical_pipeline()
+    
+    # Test 1: Hinglish with conversational memory
+    logger.info("E2E Turn 1: Hinglish Input")
+    res1 = pipeline.process("Mujhe severe chest pain hai", session_id="test_e2e_001")
+    logger.info(f"Turn 1 Output:\n{json.dumps(res1, indent=2)}")
+    
+    logger.info("E2E Turn 2: Follow-up Input")
+    res2 = pipeline.process("It is a sharp pain on the left side.", session_id="test_e2e_001")
+    logger.info(f"Turn 2 Output:\n{json.dumps(res2, indent=2)}")
+    
     return report
 
 if __name__ == "__main__":
