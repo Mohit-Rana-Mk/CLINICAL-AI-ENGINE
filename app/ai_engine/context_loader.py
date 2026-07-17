@@ -1,96 +1,265 @@
+import logging
 from datetime import date
 
 from app.ai_engine.schemas import PatientContext
 from app.database.session import SessionLocal
 from app.repositories import PatientRepository
 
+logger = logging.getLogger(__name__)
+
 
 class PatientContextLoader:
+    """
+    Production Patient Context Loader.
 
-    def load(self, patient_id: int | None = None):
+    Responsibilities
+    ----------------
+    - Load patient demographic information
+    - Load medical history
+    - Load medications
+    - Load allergies
+    - Load vitals
+    - Load laboratory reports
+    - Never crash the AI pipeline
+    """
+
+    def load(
+        self,
+        patient_id: int | None = None,
+    ) -> PatientContext:
 
         if patient_id is None:
 
-            return PatientContext(
-                patient_id=None,
-                age=None,
-                gender=None,
-                medical_history=[],
-                medications=[],
-                allergies=[],
-                vitals={},
-                lab_reports={}
+            logger.info(
+                "Anonymous patient request."
             )
+
+            return PatientContext()
 
         db = SessionLocal()
 
         try:
 
-            repo = PatientRepository(db)
+            repository = PatientRepository(db)
 
-            patient = repo.get_patient(patient_id)
-
-            if patient["user"] is None:
-
-                return PatientContext(
-                    patient_id=patient_id,
-                    age=None,
-                    gender=None,
-                    medical_history=[],
-                    medications=[],
-                    allergies=[],
-                    vitals={},
-                    lab_reports={}
-                )
-
-            dob = patient["profile"].date_of_birth
-
-            today = date.today()
-
-            age = (
-                today.year
-                - dob.year
-                - ((today.month, today.day) < (dob.month, dob.day))
+            patient = repository.get_patient(
+                patient_id
             )
 
-            return PatientContext(
+            if (
+                patient is None
+                or patient.get("user") is None
+            ):
 
-                patient_id=patient["user"].id,
+                logger.warning(
+                    "Patient %s not found.",
+                    patient_id,
+                )
+
+                return PatientContext(
+                    patient_id=patient_id
+                )
+
+            user = patient.get("user")
+            profile = patient.get("profile")
+            vitals = patient.get("vitals")
+            labs = patient.get("labs")
+
+            # ----------------------------------
+            # Calculate Age
+            # ----------------------------------
+
+            age = None
+
+            if (
+                profile
+                and profile.date_of_birth
+            ):
+
+                today = date.today()
+
+                dob = profile.date_of_birth
+
+                age = (
+                    today.year
+                    - dob.year
+                    - (
+                        (today.month, today.day)
+                        < (dob.month, dob.day)
+                    )
+                )
+
+            # ----------------------------------
+            # Medical History
+            # ----------------------------------
+
+            medical_history = sorted(
+                list(
+                    {
+                        item.disease
+                        for item in patient.get(
+                            "history",
+                            []
+                        )
+                        if getattr(
+                            item,
+                            "disease",
+                            None,
+                        )
+                    }
+                )
+            )
+
+            # ----------------------------------
+            # Medications
+            # ----------------------------------
+
+            medications = sorted(
+                list(
+                    {
+                        item.medicine_name
+                        for item in patient.get(
+                            "medications",
+                            []
+                        )
+                        if getattr(
+                            item,
+                            "medicine_name",
+                            None,
+                        )
+                    }
+                )
+            )
+
+            # ----------------------------------
+            # Allergies
+            # ----------------------------------
+
+            allergies = sorted(
+                list(
+                    {
+                        item.allergen
+                        for item in patient.get(
+                            "allergies",
+                            []
+                        )
+                        if getattr(
+                            item,
+                            "allergen",
+                            None,
+                        )
+                    }
+                )
+            )
+
+            # ----------------------------------
+            # Vitals
+            # ----------------------------------
+
+            vitals_data = {
+
+                "temperature": getattr(
+                    vitals,
+                    "temperature",
+                    None,
+                ),
+
+                "pulse": getattr(
+                    vitals,
+                    "pulse",
+                    None,
+                ),
+
+                "spo2": getattr(
+                    vitals,
+                    "spo2",
+                    None,
+                ),
+
+                "blood_pressure": (
+                    f"{vitals.systolic_bp}/{vitals.diastolic_bp}"
+                    if (
+                        vitals
+                        and getattr(
+                            vitals,
+                            "systolic_bp",
+                            None,
+                        )
+                        is not None
+                        and getattr(
+                            vitals,
+                            "diastolic_bp",
+                            None,
+                        )
+                        is not None
+                    )
+                    else None
+                ),
+            }
+
+            # ----------------------------------
+            # Laboratory Reports
+            # ----------------------------------
+
+            laboratory_data = {
+
+                "hba1c": getattr(
+                    labs,
+                    "hba1c",
+                    None,
+                ),
+
+                "glucose": getattr(
+                    labs,
+                    "glucose",
+                    None,
+                ),
+
+                "hemoglobin": getattr(
+                    labs,
+                    "hemoglobin",
+                    None,
+                ),
+            }
+
+            context = PatientContext(
+
+                patient_id=user.id,
 
                 age=age,
 
-                gender=patient["profile"].gender,
+                gender=getattr(
+                    profile,
+                    "gender",
+                    None,
+                ),
 
-                medical_history=[
-                    h.disease
-                    for h in patient["history"]
-                ],
+                medical_history=medical_history,
 
-                medications=[
-                    m.medicine_name
-                    for m in patient["medications"]
-                ],
+                medications=medications,
 
-                allergies=[
-                    a.allergen
-                    for a in patient["allergies"]
-                ],
+                allergies=allergies,
 
-                vitals={
-                    "temperature": patient["vitals"].temperature if patient["vitals"] else None,
-                    "pulse": patient["vitals"].pulse if patient["vitals"] else None,
-                    "spo2": patient["vitals"].spo2 if patient["vitals"] else None,
-                    "blood_pressure":
-                        f"{patient['vitals'].systolic_bp}/{patient['vitals'].diastolic_bp}"
-                        if patient["vitals"] else None
-                },
+                vitals=vitals_data,
 
-                lab_reports={
-                    "hba1c": patient["labs"].hba1c if patient["labs"] else None,
-                    "glucose": patient["labs"].glucose if patient["labs"] else None,
-                    "hemoglobin": patient["labs"].hemoglobin if patient["labs"] else None
-                }
+                lab_reports=laboratory_data,
 
+            )
+
+            logger.info(
+                "Patient context loaded successfully."
+            )
+
+            return context
+
+        except Exception:
+
+            logger.exception(
+                "Failed to load patient context."
+            )
+
+            return PatientContext(
+                patient_id=patient_id
             )
 
         finally:
