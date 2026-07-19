@@ -1,0 +1,601 @@
+Question,Expected_Source,Disease,Specialty,Difficulty
+What is hypertension?,WHO,Hypertension,Cardiology,Easy
+What are the symptoms of hypertension?,WHO,Hypertension,Cardiology,Easy
+What is the normal blood pressure range?,WHO,Hypertension,Cardiology,Easy
+What causes hypertension?,WHO,Hypertension,Cardiology,Medium
+Who is at risk of developing hypertension?,WHO,Hypertension,Cardiology,Medium
+How is hypertension diagnosed?,NICE,Hypertension,Cardiology,Medium
+What lifestyle changes help control hypertension?,WHO,Hypertension,Cardiology,Easy
+When should blood pressure medication be started?,NICE,Hypertension,Cardiology,Hard
+What are the complications of uncontrolled hypertension?,WHO,Hypertension,Cardiology,Medium
+How often should blood pressure be monitored?,WHO,Hypertension,Cardiology,Easy
+What is coronary artery disease?,WHO,Cardiovascular Disease,Cardiology,Easy
+What are the symptoms of a heart attack?,WHO,Heart Attack,Cardiology,Easy
+What should be done during a suspected heart attack?,WHO,Heart Attack,Cardiology,Medium
+What are the major risk factors for cardiovascular disease?,WHO,Cardiovascular Disease,Cardiology,Medium
+What is the difference between systolic and diastolic blood pressure?,WHO,Hypertension,Cardiology,Easy
+What are the warning signs of stroke related to hypertension?,WHO,Stroke,Cardiology,Medium
+What medications are commonly used for hypertension?,NICE,Hypertension,Cardiology,Hard
+What dietary changes reduce cardiovascular risk?,WHO,Cardiovascular Disease,Cardiology,Easy
+How does smoking affect heart health?,WHO,Cardiovascular Disease,Cardiology,Easy
+How does obesity increase cardiovascular disease risk?,WHO,Cardiovascular Disease,Cardiology,Medium
+What is heart failure?,WHO,Heart Failure,Cardiology,Easy
+What are the common symptoms of heart failure?,WHO,Heart Failure,Cardiology,Easy
+What causes heart failure?,WHO,Heart Failure,Cardiology,Medium
+How is heart failure diagnosed?,NICE,Heart Failure,Cardiology,Medium
+How is heart failure treated?,NICE,Heart Failure,Cardiology,Hard
+What is angina?,WHO,Angina,Cardiology,Easy
+What are the symptoms of angina?,WHO,Angina,Cardiology,Easy
+How is angina different from a heart attack?,WHO,Angina,Cardiology,Medium
+What medications are commonly used to treat angina?,NICE,Angina,Cardiology,Hard
+What is atrial fibrillation?,WHO,Atrial Fibrillation,Cardiology,Easy
+What are the symptoms of atrial fibrillation?,WHO,Atrial Fibrillation,Cardiology,Easy
+How is atrial fibrillation diagnosed?,NICE,Atrial Fibrillation,Cardiology,Medium
+How is atrial fibrillation treated?,NICE,Atrial Fibrillation,Cardiology,Hard
+What is high cholesterol?,WHO,High Cholesterol,Cardiology,Easy
+Why is high cholesterol dangerous?,WHO,High Cholesterol,Cardiology,Easy
+How can cholesterol levels be reduced?,WHO,High Cholesterol,Cardiology,Medium
+What are statins and when are they prescribed?,NICE,High Cholesterol,Cardiology,Hard
+What is an electrocardiogram (ECG)?,WHO,ECG,Cardiology,Easy
+Why is an ECG performed?,WHO,ECG,Cardiology,Easy
+What conditions can an ECG detect?,NICE,ECG,Cardiology,Medium
+What is an echocardiogram?,WHO,Echocardiogram,Cardiology,Easy
+When is an echocardiogram recommended?,NICE,Echocardiogram,Cardiology,Medium
+How can heart disease be prevented?,WHO,Cardiovascular Disease,Cardiology,Easy
+What are the warning signs of a stroke?,WHO,Stroke,Cardiology,Medium
+How does regular exercise improve heart health?,WHO,Cardiovascular Disease,Cardiology,Easy
+What foods support a healthy heart?,WHO,Cardiovascular Disease,Cardiology,Easy
+What is coronary angiography?,NICE,Coronary Artery Disease,Cardiology,Hard
+How is coronary artery disease treated?,NICE,Coronary Artery Disease,Cardiology,Hard
+What are the symptoms of peripheral artery disease?,WHO,Peripheral Artery Disease,Cardiology,Medium
+How does diabetes increase the risk of heart disease?,WHO,Cardiovascular Disease,Cardiology,Medium
+What is eczema?,NICE,Eczema,Dermatology,Easy
+What are the symptoms of eczema?,NICE,Eczema,Dermatology,Easy
+What causes eczema?,WHO,Eczema,Dermatology,Medium
+How is eczema diagnosed?,NICE,Eczema,Dermatology,Medium
+How is eczema treated?,NICE,Eczema,Dermatology,Hard
+What triggers eczema flare-ups?,WHO,Eczema,Dermatology,Medium
+What is psoriasis?,WHO,Psoriasis,Dermatology,Easy
+What are the symptoms of psoriasis?,WHO,Psoriasis,Dermatology,Easy
+How is psoriasis diagnosed?,NICE,Psoriasis,Dermatology,Medium
+How is psoriasis treated?,NICE,Psoriasis,Dermatology,Hard
+What is acne vulgaris?,WHO,Acne,Dermatology,Easy
+What causes acne?,WHO,Acne,Dermatology,Easy
+How is acne treated?,WHO,Acne,Dermatology,Medium
+Can diet affect acne?,WHO,Acne,Dermatology,Medium
+What is rosacea?,WHO,Rosacea,Dermatology,Easy
+What are the symptoms of rosacea?,WHO,Rosacea,Dermatology,Easy
+How is rosacea treated?,NICE,Rosacea,Dermatology,Medium
+What is vitiligo?,WHO,Vitiligo,Dermatology,Easy
+What causes vitiligo?,WHO,Vitiligo,Dermatology,Medium
+How is vitiligo managed?,WHO,Vitiligo,Dermatology,Medium
+What is a fungal skin infection?,WHO,Fungal Infection,Dermatology,Easy
+What are the common symptoms of fungal skin infections?,WHO,Fungal Infection,Dermatology,Easy
+How are fungal skin infections treated?,WHO,Fungal Infection,Dermatology,Medium
+What is scabies?,WHO,Scabies,Dermatology,Easy
+How does scabies spread?,WHO,Scabies,Dermatology,Medium
+How is scabies treated?,WHO,Scabies,Dermatology,Medium
+What is contact dermatitis?,WHO,Contact Dermatitis,Dermatology,Easy
+What causes contact dermatitis?,WHO,Contact Dermatitis,Dermatology,Medium
+How is contact dermatitis treated?,NICE,Contact Dermatitis,Dermatology,Medium
+When should a suspicious mole be evaluated?,WHO,Skin Cancer,Dermatology,Hard
+What is seborrheic dermatitis?,WHO,Seborrheic Dermatitis,Dermatology,Easy
+What causes seborrheic dermatitis?,WHO,Seborrheic Dermatitis,Dermatology,Medium
+How is seborrheic dermatitis treated?,WHO,Seborrheic Dermatitis,Dermatology,Medium
+What is urticaria (hives)?,WHO,Urticaria,Dermatology,Easy
+What causes urticaria?,WHO,Urticaria,Dermatology,Medium
+How is urticaria treated?,WHO,Urticaria,Dermatology,Medium
+What is impetigo?,WHO,Impetigo,Dermatology,Easy
+How does impetigo spread?,WHO,Impetigo,Dermatology,Medium
+How is impetigo treated?,WHO,Impetigo,Dermatology,Medium
+What is cellulitis?,WHO,Cellulitis,Dermatology,Easy
+What are the symptoms of cellulitis?,WHO,Cellulitis,Dermatology,Medium
+How is cellulitis treated?,WHO,Cellulitis,Dermatology,Hard
+What is shingles?,WHO,Shingles,Dermatology,Easy
+What causes shingles?,WHO,Shingles,Dermatology,Medium
+How is shingles treated?,WHO,Shingles,Dermatology,Medium
+What is melanoma?,WHO,Melanoma,Dermatology,Easy
+What are the warning signs of melanoma?,WHO,Melanoma,Dermatology,Hard
+How can skin cancer be prevented?,WHO,Skin Cancer,Dermatology,Medium
+What is alopecia areata?,WHO,Alopecia Areata,Dermatology,Easy
+What causes alopecia areata?,WHO,Alopecia Areata,Dermatology,Medium
+How is alopecia areata treated?,WHO,Alopecia Areata,Dermatology,Medium
+What is ringworm?,WHO,Ringworm,Dermatology,Easy
+How is ringworm diagnosed?,WHO,Ringworm,Dermatology,Medium
+How is ringworm treated?,WHO,Ringworm,Dermatology,Medium
+What is eczema herpeticum?,NICE,Eczema,Dermatology,Hard
+What moisturizers are recommended for eczema?,NICE,Eczema,Dermatology,Easy
+How should topical corticosteroids be used safely?,NICE,Eczema,Dermatology,Hard
+When should a dermatologist be consulted for chronic skin disease?,WHO,Skin Disease,Dermatology,Medium
+What are common symptoms of allergic skin reactions?,WHO,Allergic Skin Reaction,Dermatology,Easy
+How can skin infections be prevented?,WHO,Skin Infection,Dermatology,Easy
+What is triage in emergency care?,WHO,Emergency Triage,Emergency,Easy
+What are the priority levels in emergency triage?,WHO,Emergency Triage,Emergency,Medium
+When should someone visit the emergency department?,WHO,Emergency Care,Emergency,Easy
+What are the signs of a medical emergency?,WHO,Emergency Care,Emergency,Easy
+How should severe bleeding be controlled?,WHO,Bleeding,Emergency,Medium
+What are the first steps in treating severe bleeding?,WHO,Bleeding,Emergency,Medium
+What is shock?,WHO,Shock,Emergency,Easy
+What are the symptoms of shock?,WHO,Shock,Emergency,Medium
+How is shock treated in an emergency?,WHO,Shock,Emergency,Hard
+What is anaphylaxis?,WHO,Anaphylaxis,Emergency,Easy
+What are the symptoms of anaphylaxis?,WHO,Anaphylaxis,Emergency,Easy
+How should anaphylaxis be managed immediately?,WHO,Anaphylaxis,Emergency,Hard
+What should you do if someone is unconscious?,WHO,Unconsciousness,Emergency,Medium
+How do you recognize cardiac arrest?,WHO,Cardiac Arrest,Emergency,Medium
+What is CPR?,WHO,Cardiac Arrest,Emergency,Easy
+When should CPR be started?,WHO,Cardiac Arrest,Emergency,Medium
+How should burns be treated immediately?,WHO,Burns,Emergency,Medium
+What should not be done when treating burns?,WHO,Burns,Emergency,Medium
+How are fractures managed before reaching a hospital?,WHO,Fractures,Emergency,Medium
+What are the signs of a fracture?,WHO,Fractures,Emergency,Easy
+What is heat stroke?,WHO,Heat Stroke,Emergency,Easy
+How is heat stroke treated?,WHO,Heat Stroke,Emergency,Hard
+What are the symptoms of hypothermia?,WHO,Hypothermia,Emergency,Easy
+How should hypothermia be managed?,WHO,Hypothermia,Emergency,Hard
+What are the warning signs of sepsis?,WHO,Sepsis,Emergency,Medium
+How should a choking adult be helped?,WHO,Choking,Emergency,Hard
+What are the symptoms of poisoning?,WHO,Poisoning,Emergency,Medium
+What should be done in case of suspected poisoning?,WHO,Poisoning,Emergency,Hard
+How should a seizure be managed safely?,WHO,Seizure,Emergency,Medium
+When should emergency medical services be called immediately?,WHO,Emergency Care,Emergency,Easy
+What is diabetes mellitus?,ADA,Diabetes,Endocrinology,Easy
+What are the main types of diabetes?,ADA,Diabetes,Endocrinology,Easy
+What are the symptoms of type 1 diabetes?,ADA,Type 1 Diabetes,Endocrinology,Easy
+What are the symptoms of type 2 diabetes?,ADA,Type 2 Diabetes,Endocrinology,Easy
+What causes type 2 diabetes?,ADA,Type 2 Diabetes,Endocrinology,Medium
+How is diabetes diagnosed?,ADA,Diabetes,Endocrinology,Medium
+What is HbA1c?,ADA,Diabetes,Endocrinology,Easy
+What is a normal HbA1c level?,ADA,Diabetes,Endocrinology,Medium
+How often should blood glucose be monitored?,ADA,Diabetes,Endocrinology,Medium
+What is hypoglycemia?,ADA,Hypoglycemia,Endocrinology,Easy
+What are the symptoms of hypoglycemia?,ADA,Hypoglycemia,Endocrinology,Easy
+How should hypoglycemia be treated?,ADA,Hypoglycemia,Endocrinology,Hard
+What is hyperglycemia?,ADA,Hyperglycemia,Endocrinology,Easy
+What are the symptoms of hyperglycemia?,ADA,Hyperglycemia,Endocrinology,Medium
+How is hyperglycemia managed?,ADA,Hyperglycemia,Endocrinology,Hard
+What foods should people with diabetes avoid?,ADA,Diabetes,Endocrinology,Medium
+How does exercise help control diabetes?,ADA,Diabetes,Endocrinology,Easy
+What are the complications of uncontrolled diabetes?,ADA,Diabetes,Endocrinology,Hard
+What is diabetic ketoacidosis?,ADA,Diabetic Ketoacidosis,Endocrinology,Hard
+When is insulin therapy required?,ADA,Diabetes,Endocrinology,Medium
+What is hypothyroidism?,WHO,Hypothyroidism,Endocrinology,Easy
+What are the symptoms of hypothyroidism?,WHO,Hypothyroidism,Endocrinology,Easy
+How is hypothyroidism treated?,WHO,Hypothyroidism,Endocrinology,Medium
+What is hyperthyroidism?,WHO,Hyperthyroidism,Endocrinology,Easy
+What are the symptoms of hyperthyroidism?,WHO,Hyperthyroidism,Endocrinology,Medium
+How is hyperthyroidism treated?,WHO,Hyperthyroidism,Endocrinology,Hard
+What is gestational diabetes?,ADA,Gestational Diabetes,Endocrinology,Medium
+How is gestational diabetes managed?,ADA,Gestational Diabetes,Endocrinology,Hard
+What lifestyle changes help prevent type 2 diabetes?,ADA,Type 2 Diabetes,Endocrinology,Easy
+How can diabetes-related complications be prevented?,ADA,Diabetes,Endocrinology,Medium
+What is tuberculosis?,WHO,Tuberculosis,Infectious Diseases,Easy
+What are the symptoms of tuberculosis?,WHO,Tuberculosis,Infectious Diseases,Easy
+How is tuberculosis diagnosed?,WHO,Tuberculosis,Infectious Diseases,Medium
+How is tuberculosis treated?,WHO,Tuberculosis,Infectious Diseases,Hard
+How does tuberculosis spread?,WHO,Tuberculosis,Infectious Diseases,Medium
+What is influenza?,WHO,Influenza,Infectious Diseases,Easy
+What are the symptoms of influenza?,WHO,Influenza,Infectious Diseases,Easy
+How can influenza be prevented?,WHO,Influenza,Infectious Diseases,Medium
+When should antibiotics be used?,WHO,Antibiotic Use,Infectious Diseases,Medium
+Why should antibiotics not be overused?,WHO,Antibiotic Resistance,Infectious Diseases,Medium
+What is antibiotic resistance?,WHO,Antibiotic Resistance,Infectious Diseases,Easy
+How can antibiotic resistance be prevented?,WHO,Antibiotic Resistance,Infectious Diseases,Medium
+What is sepsis?,WHO,Sepsis,Infectious Diseases,Medium
+What are the warning signs of sepsis?,WHO,Sepsis,Infectious Diseases,Hard
+What is hepatitis B?,WHO,Hepatitis B,Infectious Diseases,Easy
+How is hepatitis B transmitted?,WHO,Hepatitis B,Infectious Diseases,Medium
+Can hepatitis B be prevented?,WHO,Hepatitis B,Infectious Diseases,Easy
+What is HIV?,WHO,HIV,Infectious Diseases,Easy
+How is HIV transmitted?,WHO,HIV,Infectious Diseases,Medium
+How can HIV transmission be prevented?,WHO,HIV,Infectious Diseases,Medium
+What is dengue fever?,WHO,Dengue,Infectious Diseases,Easy
+What are the symptoms of dengue fever?,WHO,Dengue,Infectious Diseases,Easy
+How is dengue fever treated?,WHO,Dengue,Infectious Diseases,Medium
+What is malaria?,WHO,Malaria,Infectious Diseases,Easy
+How is malaria diagnosed?,WHO,Malaria,Infectious Diseases,Medium
+How is malaria prevented?,WHO,Malaria,Infectious Diseases,Medium
+What is COVID-19?,WHO,COVID-19,Infectious Diseases,Easy
+What are the common symptoms of COVID-19?,WHO,COVID-19,Infectious Diseases,Easy
+How can respiratory infections be prevented?,WHO,Respiratory Infection,Infectious Diseases,Easy
+When should a person with an infectious disease seek emergency medical care?,WHO,Infectious Disease,Infectious Diseases,Hard
+What is tuberculosis?,WHO,Tuberculosis,Infectious Diseases,Easy
+How does tuberculosis spread?,WHO,Tuberculosis,Infectious Diseases,Easy
+What are the symptoms of tuberculosis?,WHO,Tuberculosis,Infectious Diseases,Easy
+How is tuberculosis diagnosed?,WHO,Tuberculosis,Infectious Diseases,Medium
+How is tuberculosis treated?,WHO,Tuberculosis,Infectious Diseases,Medium
+Can tuberculosis be prevented?,WHO,Tuberculosis,Infectious Diseases,Easy
+What is latent tuberculosis infection?,WHO,Tuberculosis,Infectious Diseases,Medium
+Who is at higher risk of developing tuberculosis?,WHO,Tuberculosis,Infectious Diseases,Medium
+What is multidrug-resistant tuberculosis (MDR-TB)?,WHO,Tuberculosis,Infectious Diseases,Hard
+When should a person with tuberculosis be isolated?,CDC,Tuberculosis,Infectious Diseases,Hard
+What is influenza?,WHO,Influenza,Infectious Diseases,Easy
+What are the symptoms of influenza?,WHO,Influenza,Infectious Diseases,Easy
+How is influenza transmitted?,WHO,Influenza,Infectious Diseases,Easy
+Who should receive the influenza vaccine?,WHO,Influenza,Infectious Diseases,Medium
+How can influenza complications be prevented?,WHO,Influenza,Infectious Diseases,Medium
+What is viral gastroenteritis?,WHO,Gastroenteritis,Infectious Diseases,Easy
+What are the common causes of viral gastroenteritis?,WHO,Gastroenteritis,Infectious Diseases,Easy
+How is viral gastroenteritis treated?,WHO,Gastroenteritis,Infectious Diseases,Medium
+How can gastroenteritis be prevented?,WHO,Gastroenteritis,Infectious Diseases,Easy
+When should dehydration from gastroenteritis be treated urgently?,WHO,Gastroenteritis,Infectious Diseases,Hard
+What is measles?,WHO,Measles,Infectious Diseases,Easy
+How does measles spread?,WHO,Measles,Infectious Diseases,Easy
+What are the symptoms of measles?,WHO,Measles,Infectious Diseases,Easy
+How can measles be prevented?,WHO,Measles,Infectious Diseases,Easy
+Who should receive the measles vaccine?,WHO,Measles,Infectious Diseases,Medium
+What are the complications of measles?,WHO,Measles,Infectious Diseases,Medium
+What is chickenpox?,WHO,Chickenpox,Infectious Diseases,Easy
+How does chickenpox spread?,WHO,Chickenpox,Infectious Diseases,Easy
+What are the symptoms of chickenpox?,WHO,Chickenpox,Infectious Diseases,Easy
+How is chickenpox treated?,WHO,Chickenpox,Infectious Diseases,Medium
+Can chickenpox be prevented?,WHO,Chickenpox,Infectious Diseases,Easy
+Who is at high risk of severe chickenpox?,WHO,Chickenpox,Infectious Diseases,Medium
+What is meningitis?,WHO,Meningitis,Infectious Diseases,Easy
+What are the symptoms of meningitis?,WHO,Meningitis,Infectious Diseases,Medium
+How is meningitis diagnosed?,WHO,Meningitis,Infectious Diseases,Medium
+How is bacterial meningitis treated?,WHO,Meningitis,Infectious Diseases,Hard
+Can meningitis be prevented?,WHO,Meningitis,Infectious Diseases,Medium
+When should meningitis be considered a medical emergency?,WHO,Meningitis,Infectious Diseases,Hard
+What is rabies?,WHO,Rabies,Infectious Diseases,Easy
+What should be done immediately after an animal bite?,WHO,Rabies,Infectious Diseases,Hard
+What is tetanus?,WHO,Tetanus,Infectious Diseases,Easy
+How can tetanus be prevented?,WHO,Tetanus,Infectious Diseases,Easy
+Who should receive a tetanus booster?,WHO,Tetanus,Infectious Diseases,Medium
+What are the symptoms of tetanus?,WHO,Tetanus,Infectious Diseases,Medium
+How is tetanus treated?,WHO,Tetanus,Infectious Diseases,Hard
+What is cholera?,WHO,Cholera,Infectious Diseases,Easy
+How does cholera spread?,WHO,Cholera,Infectious Diseases,Easy
+What are the symptoms of cholera?,WHO,Cholera,Infectious Diseases,Easy
+How is cholera treated?,WHO,Cholera,Infectious Diseases,Medium
+How can cholera be prevented?,WHO,Cholera,Infectious Diseases,Easy
+What is typhoid fever?,WHO,Typhoid Fever,Infectious Diseases,Easy
+How is typhoid fever transmitted?,WHO,Typhoid Fever,Infectious Diseases,Easy
+What are the symptoms of typhoid fever?,WHO,Typhoid Fever,Infectious Diseases,Medium
+How is typhoid fever diagnosed?,WHO,Typhoid Fever,Infectious Diseases,Medium
+How is typhoid fever treated?,WHO,Typhoid Fever,Infectious Diseases,Medium
+Can typhoid fever be prevented?,WHO,Typhoid Fever,Infectious Diseases,Easy
+What is leptospirosis?,WHO,Leptospirosis,Infectious Diseases,Easy
+How is leptospirosis transmitted?,WHO,Leptospirosis,Infectious Diseases,Medium
+What are the symptoms of leptospirosis?,WHO,Leptospirosis,Infectious Diseases,Medium
+How is leptospirosis treated?,WHO,Leptospirosis,Infectious Diseases,Hard
+What is ringworm?,WHO,Ringworm,Dermatology,Easy
+How is ringworm transmitted?,WHO,Ringworm,Dermatology,Easy
+What are the symptoms of ringworm?,WHO,Ringworm,Dermatology,Easy
+How is ringworm treated?,WHO,Ringworm,Dermatology,Medium
+Can ringworm be prevented?,WHO,Ringworm,Dermatology,Easy
+What is scabies?,WHO,Scabies,Dermatology,Easy
+How does scabies spread?,WHO,Scabies,Dermatology,Easy
+What are the symptoms of scabies?,WHO,Scabies,Dermatology,Easy
+How is scabies treated?,WHO,Scabies,Dermatology,Medium
+How can scabies be prevented from spreading?,WHO,Scabies,Dermatology,Medium
+What is cellulitis?,WHO,Cellulitis,Dermatology,Easy
+What are the symptoms of cellulitis?,WHO,Cellulitis,Dermatology,Medium
+How is cellulitis treated?,WHO,Cellulitis,Dermatology,Medium
+When should cellulitis be treated urgently?,WHO,Cellulitis,Dermatology,Hard
+What is psoriasis?,WHO,Psoriasis,Dermatology,Easy
+What are the common symptoms of psoriasis?,WHO,Psoriasis,Dermatology,Easy
+How is psoriasis managed?,WHO,Psoriasis,Dermatology,Medium
+Can psoriasis be cured?,WHO,Psoriasis,Dermatology,Medium
+What triggers psoriasis flare-ups?,WHO,Psoriasis,Dermatology,Medium
+When should a person with psoriasis see a dermatologist?,WHO,Psoriasis,Dermatology,Hard
+What is acne?,WHO,Acne,Dermatology,Easy
+What causes acne?,WHO,Acne,Dermatology,Easy
+How is acne treated?,WHO,Acne,Dermatology,Medium
+Can acne scars be prevented?,WHO,Acne,Dermatology,Medium
+When should someone see a dermatologist for acne?,WHO,Acne,Dermatology,Medium
+What is rosacea?,WHO,Rosacea,Dermatology,Easy
+What are the symptoms of rosacea?,WHO,Rosacea,Dermatology,Easy
+How is rosacea treated?,WHO,Rosacea,Dermatology,Medium
+What triggers rosacea flare-ups?,WHO,Rosacea,Dermatology,Medium
+Can rosacea be cured?,WHO,Rosacea,Dermatology,Hard
+What is impetigo?,WHO,Impetigo,Dermatology,Easy
+How does impetigo spread?,WHO,Impetigo,Dermatology,Easy
+What are the symptoms of impetigo?,WHO,Impetigo,Dermatology,Easy
+How is impetigo treated?,WHO,Impetigo,Dermatology,Medium
+How can impetigo be prevented?,WHO,Impetigo,Dermatology,Easy
+What is urticaria (hives)?,WHO,Urticaria,Dermatology,Easy
+What causes hives?,WHO,Urticaria,Dermatology,Medium
+How are hives treated?,WHO,Urticaria,Dermatology,Medium
+When should hives be considered a medical emergency?,WHO,Urticaria,Dermatology,Hard
+Can allergic skin reactions be prevented?,WHO,Urticaria,Dermatology,Medium
+What is vitiligo?,WHO,Vitiligo,Dermatology,Easy
+What causes vitiligo?,WHO,Vitiligo,Dermatology,Medium
+How is vitiligo diagnosed?,WHO,Vitiligo,Dermatology,Medium
+Can vitiligo be treated?,WHO,Vitiligo,Dermatology,Medium
+Is vitiligo contagious?,WHO,Vitiligo,Dermatology,Easy
+What is contact dermatitis?,WHO,Contact Dermatitis,Dermatology,Easy
+What causes contact dermatitis?,WHO,Contact Dermatitis,Dermatology,Easy
+What are the symptoms of contact dermatitis?,WHO,Contact Dermatitis,Dermatology,Easy
+How is contact dermatitis treated?,WHO,Contact Dermatitis,Dermatology,Medium
+How can contact dermatitis be prevented?,WHO,Contact Dermatitis,Dermatology,Medium
+What is seborrheic dermatitis?,WHO,Seborrheic Dermatitis,Dermatology,Easy
+What are the symptoms of seborrheic dermatitis?,WHO,Seborrheic Dermatitis,Dermatology,Easy
+How is seborrheic dermatitis managed?,WHO,Seborrheic Dermatitis,Dermatology,Medium
+What causes dandruff?,WHO,Seborrheic Dermatitis,Dermatology,Easy
+When should dandruff be evaluated by a doctor?,WHO,Seborrheic Dermatitis,Dermatology,Medium
+What is fungal nail infection?,WHO,Fungal Nail Infection,Dermatology,Easy
+How is fungal nail infection diagnosed?,WHO,Fungal Nail Infection,Dermatology,Medium
+How is fungal nail infection treated?,WHO,Fungal Nail Infection,Dermatology,Medium
+Can fungal nail infection be prevented?,WHO,Fungal Nail Infection,Dermatology,Easy
+When should nail infections be evaluated by a dermatologist?,WHO,Fungal Nail Infection,Dermatology,Hard
+What is alopecia areata?,WHO,Alopecia Areata,Dermatology,Easy
+What causes alopecia areata?,WHO,Alopecia Areata,Dermatology,Medium
+Can alopecia areata be treated?,WHO,Alopecia Areata,Dermatology,Medium
+Is hair loss always permanent?,WHO,Alopecia Areata,Dermatology,Easy
+When should hair loss be evaluated by a doctor?,WHO,Alopecia Areata,Dermatology,Medium
+What is melasma?,WHO,Melasma,Dermatology,Easy
+What causes melasma?,WHO,Melasma,Dermatology,Medium
+How is melasma treated?,WHO,Melasma,Dermatology,Medium
+Can melasma be prevented from worsening?,WHO,Melasma,Dermatology,Easy
+Does sunscreen help prevent melasma?,WHO,Melasma,Dermatology,Easy
+What are warts?,WHO,Warts,Dermatology,Easy
+What causes warts?,WHO,Warts,Dermatology,Easy
+How are warts treated?,WHO,Warts,Dermatology,Medium
+Can warts spread to other people?,WHO,Warts,Dermatology,Easy
+How can warts be prevented?,WHO,Warts,Dermatology,Easy
+What are skin tags?,WHO,Skin Tags,Dermatology,Easy
+Do skin tags require treatment?,WHO,Skin Tags,Dermatology,Easy
+When should a skin growth be evaluated by a dermatologist?,WHO,Skin Lesions,Dermatology,Hard
+What are the warning signs of skin cancer?,WHO,Skin Cancer,Dermatology,Hard
+How can skin cancer risk be reduced?,WHO,Skin Cancer,Dermatology,Medium
+What is sunburn?,WHO,Sunburn,Dermatology,Easy
+What causes sunburn?,WHO,Sunburn,Dermatology,Easy
+How should sunburn be treated?,WHO,Sunburn,Dermatology,Medium
+How can sunburn be prevented?,WHO,Sunburn,Dermatology,Easy
+When should sunburn require medical attention?,WHO,Sunburn,Dermatology,Hard
+What is heat rash?,WHO,Heat Rash,Dermatology,Easy
+What causes heat rash?,WHO,Heat Rash,Dermatology,Easy
+How is heat rash treated?,WHO,Heat Rash,Dermatology,Easy
+How can heat rash be prevented?,WHO,Heat Rash,Dermatology,Easy
+When should heat rash be evaluated by a doctor?,WHO,Heat Rash,Dermatology,Medium
+What is a pressure ulcer?,WHO,Pressure Ulcer,Dermatology,Easy
+How can pressure ulcers be prevented?,WHO,Pressure Ulcer,Dermatology,Medium
+How are pressure ulcers treated?,WHO,Pressure Ulcer,Dermatology,Hard
+Who is at risk of developing pressure ulcers?,WHO,Pressure Ulcer,Dermatology,Medium
+What are the stages of pressure ulcers?,WHO,Pressure Ulcer,Dermatology,Hard
+What is athlete's foot?,WHO,Athlete's Foot,Dermatology,Easy
+How is athlete's foot transmitted?,WHO,Athlete's Foot,Dermatology,Easy
+What are the symptoms of athlete's foot?,WHO,Athlete's Foot,Dermatology,Easy
+How is athlete's foot treated?,WHO,Athlete's Foot,Dermatology,Medium
+How can athlete's foot be prevented?,WHO,Athlete's Foot,Dermatology,Easy
+What is a boil?,WHO,Boils,Dermatology,Easy
+What causes boils?,WHO,Boils,Dermatology,Easy
+How are boils treated?,WHO,Boils,Dermatology,Medium
+When should a boil be evaluated by a doctor?,WHO,Boils,Dermatology,Medium
+How can boils be prevented?,WHO,Boils,Dermatology,Easy
+What is shingles?,WHO,Shingles,Dermatology,Easy
+What causes shingles?,WHO,Shingles,Dermatology,Medium
+What are the symptoms of shingles?,WHO,Shingles,Dermatology,Easy
+How is shingles treated?,WHO,Shingles,Dermatology,Medium
+Can shingles be prevented?,WHO,Shingles,Dermatology,Medium
+What is a cold sore?,WHO,Cold Sores,Dermatology,Easy
+What causes cold sores?,WHO,Cold Sores,Dermatology,Easy
+How are cold sores treated?,WHO,Cold Sores,Dermatology,Medium
+How can cold sores be prevented from spreading?,WHO,Cold Sores,Dermatology,Medium
+When should cold sores be evaluated by a doctor?,WHO,Cold Sores,Dermatology,Hard
+What is hidradenitis suppurativa?,WHO,Hidradenitis Suppurativa,Dermatology,Medium
+What are the symptoms of hidradenitis suppurativa?,WHO,Hidradenitis Suppurativa,Dermatology,Medium
+How is hidradenitis suppurativa treated?,WHO,Hidradenitis Suppurativa,Dermatology,Hard
+What lifestyle changes help manage hidradenitis suppurativa?,WHO,Hidradenitis Suppurativa,Dermatology,Medium
+When should hidradenitis suppurativa be referred to a specialist?,WHO,Hidradenitis Suppurativa,Dermatology,Hard
+What is eczema herpeticum?,NICE,Eczema Herpeticum,Dermatology,Hard
+What are the symptoms of eczema herpeticum?,NICE,Eczema Herpeticum,Dermatology,Hard
+How is eczema herpeticum treated?,NICE,Eczema Herpeticum,Dermatology,Hard
+When should eczema herpeticum be considered an emergency?,NICE,Eczema Herpeticum,Dermatology,Hard
+What is lichen planus?,WHO,Lichen Planus,Dermatology,Medium
+What are the symptoms of lichen planus?,WHO,Lichen Planus,Dermatology,Medium
+How is lichen planus diagnosed?,WHO,Lichen Planus,Dermatology,Medium
+How is lichen planus treated?,WHO,Lichen Planus,Dermatology,Hard
+What is pityriasis rosea?,WHO,Pityriasis Rosea,Dermatology,Easy
+What are the symptoms of pityriasis rosea?,WHO,Pityriasis Rosea,Dermatology,Easy
+How is pityriasis rosea managed?,WHO,Pityriasis Rosea,Dermatology,Medium
+What is molluscum contagiosum?,WHO,Molluscum Contagiosum,Dermatology,Easy
+How does molluscum contagiosum spread?,WHO,Molluscum Contagiosum,Dermatology,Medium
+How is molluscum contagiosum treated?,WHO,Molluscum Contagiosum,Dermatology,Medium
+What is keratosis pilaris?,WHO,Keratosis Pilaris,Dermatology,Easy
+How is keratosis pilaris managed?,WHO,Keratosis Pilaris,Dermatology,Medium
+What is sebaceous cyst?,WHO,Sebaceous Cyst,Dermatology,Easy
+When should a sebaceous cyst be removed?,WHO,Sebaceous Cyst,Dermatology,Medium
+How can common skin infections be prevented?,WHO,Skin Infection,Dermatology,Easy
+When should persistent skin lesions be evaluated by a dermatologist?,WHO,Skin Lesion,Dermatology,Hard
+What are the common causes of chest pain?,WHO,Chest Pain,Emergency,Medium
+How should chest pain be evaluated in the emergency department?,WHO,Chest Pain,Emergency,Hard
+What symptoms suggest an acute myocardial infarction?,WHO,Heart Attack,Cardiology,Hard
+What are the warning signs of stroke?,WHO,Stroke,Neurology,Medium
+How should a suspected stroke patient be managed initially?,WHO,Stroke,Neurology,Hard
+What are the symptoms of diabetic ketoacidosis?,ADA,Diabetic Ketoacidosis,Endocrinology,Hard
+How is diabetic ketoacidosis treated?,ADA,Diabetic Ketoacidosis,Endocrinology,Hard
+What are the symptoms of severe hypoglycemia?,ADA,Hypoglycemia,Endocrinology,Medium
+When should insulin therapy be adjusted?,ADA,Diabetes,Endocrinology,Hard
+What are the symptoms of severe asthma exacerbation?,GOLD,Asthma,Respiratory,Hard
+How should acute asthma exacerbation be managed?,GOLD,Asthma,Respiratory,Hard
+What are the symptoms of COPD exacerbation?,GOLD,COPD,Respiratory,Medium
+How is COPD exacerbation treated?,GOLD,COPD,Respiratory,Hard
+What are the symptoms of bacterial pneumonia?,WHO,Pneumonia,Respiratory,Medium
+How is community-acquired pneumonia treated?,WHO,Pneumonia,Respiratory,Hard
+What are the danger signs of dehydration in children?,WHO,Dehydration,Pediatrics,Medium
+How should dehydration in children be treated?,WHO,Dehydration,Pediatrics,Hard
+What are the symptoms of meningitis in children?,WHO,Meningitis,Pediatrics,Hard
+When should a child with fever be referred urgently?,NICE,Fever,Pediatrics,Hard
+What are the warning signs of sepsis in adults?,WHO,Sepsis,Emergency,Hard
+What are the symptoms of septic shock?,WHO,Septic Shock,Emergency,Hard
+How is septic shock managed?,WHO,Septic Shock,Emergency,Hard
+What are the symptoms of anaphylactic shock?,WHO,Anaphylaxis,Emergency,Hard
+What is the first-line treatment for anaphylaxis?,WHO,Anaphylaxis,Emergency,Hard
+What are the symptoms of pulmonary embolism?,WHO,Pulmonary Embolism,Respiratory,Hard
+How is pulmonary embolism diagnosed?,WHO,Pulmonary Embolism,Respiratory,Hard
+What are the symptoms of deep vein thrombosis?,WHO,Deep Vein Thrombosis,Cardiology,Medium
+How is deep vein thrombosis treated?,WHO,Deep Vein Thrombosis,Cardiology,Hard
+What are the symptoms of acute kidney injury?,WHO,Acute Kidney Injury,Nephrology,Medium
+How is acute kidney injury managed initially?,WHO,Acute Kidney Injury,Nephrology,Hard
+What are the symptoms of chronic kidney disease?,WHO,Chronic Kidney Disease,Nephrology,Medium
+How is chronic kidney disease diagnosed?,WHO,Chronic Kidney Disease,Nephrology,Medium
+What are the complications of uncontrolled hypertension?,WHO,Hypertension,Cardiology,Medium
+What lifestyle changes reduce cardiovascular risk?,WHO,Cardiovascular Disease,Cardiology,Easy
+What are the symptoms of heart valve disease?,WHO,Heart Valve Disease,Cardiology,Medium
+How is heart valve disease diagnosed?,WHO,Heart Valve Disease,Cardiology,Hard
+What are the symptoms of myocarditis?,WHO,Myocarditis,Cardiology,Hard
+How is myocarditis treated?,WHO,Myocarditis,Cardiology,Hard
+What are the symptoms of pericarditis?,WHO,Pericarditis,Cardiology,Medium
+How is pericarditis managed?,WHO,Pericarditis,Cardiology,Hard
+What are the symptoms of epilepsy?,WHO,Epilepsy,Neurology,Easy
+How is epilepsy diagnosed?,WHO,Epilepsy,Neurology,Medium
+What medications are commonly used for epilepsy?,WHO,Epilepsy,Neurology,Hard
+What should be done during a seizure?,WHO,Epilepsy,Neurology,Medium
+When should emergency care be sought for a seizure?,WHO,Epilepsy,Neurology,Hard
+What is Parkinson's disease?,WHO,Parkinson's Disease,Neurology,Easy
+What are the early symptoms of Parkinson's disease?,WHO,Parkinson's Disease,Neurology,Medium
+How is Parkinson's disease treated?,WHO,Parkinson's Disease,Neurology,Hard
+What is Alzheimer's disease?,WHO,Alzheimer's Disease,Neurology,Easy
+What are the early symptoms of Alzheimer's disease?,WHO,Alzheimer's Disease,Neurology,Medium
+How is Alzheimer's disease diagnosed?,WHO,Alzheimer's Disease,Neurology,Medium
+How is Alzheimer's disease managed?,WHO,Alzheimer's Disease,Neurology,Hard
+What is migraine?,WHO,Migraine,Neurology,Easy
+What are the common triggers of migraine?,WHO,Migraine,Neurology,Medium
+How is migraine treated?,WHO,Migraine,Neurology,Medium
+What are the warning signs of meningitis?,WHO,Meningitis,Neurology,Hard
+How is bacterial meningitis treated?,WHO,Meningitis,Neurology,Hard
+What is Bell's palsy?,WHO,Bell's Palsy,Neurology,Easy
+How is Bell's palsy treated?,WHO,Bell's Palsy,Neurology,Medium
+When should facial weakness be treated as a medical emergency?,WHO,Stroke,Neurology,Hard
+What is neonatal jaundice?,WHO,Neonatal Jaundice,Pediatrics,Easy
+What are the common causes of neonatal jaundice?,WHO,Neonatal Jaundice,Pediatrics,Medium
+How is neonatal jaundice treated?,WHO,Neonatal Jaundice,Pediatrics,Medium
+What are the danger signs in newborns?,WHO,Newborn Care,Pediatrics,Hard
+What is bronchiolitis?,WHO,Bronchiolitis,Pediatrics,Easy
+What are the symptoms of bronchiolitis?,WHO,Bronchiolitis,Pediatrics,Medium
+How is bronchiolitis treated?,WHO,Bronchiolitis,Pediatrics,Medium
+What is croup?,WHO,Croup,Pediatrics,Easy
+What are the symptoms of croup?,WHO,Croup,Pediatrics,Medium
+How is croup managed?,WHO,Croup,Pediatrics,Hard
+What are the common causes of fever in children?,WHO,Fever,Pediatrics,Easy
+How should fever in children be managed?,NICE,Fever,Pediatrics,Medium
+When should a child with fever be taken to the hospital?,NICE,Fever,Pediatrics,Hard
+What are the symptoms of dehydration in children?,WHO,Dehydration,Pediatrics,Medium
+How is dehydration in children treated?,WHO,Dehydration,Pediatrics,Hard
+What are the recommended childhood immunizations?,WHO,Immunization,Pediatrics,Easy
+Why are childhood vaccines important?,WHO,Immunization,Pediatrics,Easy
+What is measles in children?,WHO,Measles,Pediatrics,Easy
+How can measles be prevented in children?,WHO,Measles,Pediatrics,Medium
+When should parents seek emergency care for a sick child?,WHO,Emergency Care,Pediatrics,Hard
+What is asthma?,GOLD,Asthma,Respiratory,Easy
+What are the common symptoms of asthma?,GOLD,Asthma,Respiratory,Easy
+What triggers asthma attacks?,GOLD,Asthma,Respiratory,Medium
+How is asthma diagnosed?,GOLD,Asthma,Respiratory,Medium
+How is asthma treated?,GOLD,Asthma,Respiratory,Hard
+What is chronic obstructive pulmonary disease (COPD)?,GOLD,COPD,Respiratory,Easy
+What are the symptoms of COPD?,GOLD,COPD,Respiratory,Easy
+How is COPD diagnosed?,GOLD,COPD,Respiratory,Medium
+How is COPD treated?,GOLD,COPD,Respiratory,Hard
+What lifestyle changes help manage COPD?,GOLD,COPD,Respiratory,Medium
+What is pneumonia?,WHO,Pneumonia,Respiratory,Easy
+What are the symptoms of pneumonia?,WHO,Pneumonia,Respiratory,Easy
+How is pneumonia diagnosed?,WHO,Pneumonia,Respiratory,Medium
+How is pneumonia treated?,WHO,Pneumonia,Respiratory,Hard
+How can pneumonia be prevented?,WHO,Pneumonia,Respiratory,Easy
+What is acute bronchitis?,WHO,Bronchitis,Respiratory,Easy
+What are the symptoms of acute bronchitis?,WHO,Bronchitis,Respiratory,Easy
+How is acute bronchitis treated?,WHO,Bronchitis,Respiratory,Medium
+What are the symptoms of respiratory failure?,WHO,Respiratory Failure,Respiratory,Hard
+When should a patient with breathing difficulty seek emergency care?,WHO,Respiratory Emergency,Respiratory,Hard
+What are the common symptoms of anemia?,WHO,Anemia,Hematology,Easy
+How is anemia diagnosed?,WHO,Anemia,Hematology,Medium
+What are the common causes of iron deficiency anemia?,WHO,Iron Deficiency Anemia,Hematology,Medium
+How is iron deficiency anemia treated?,WHO,Iron Deficiency Anemia,Hematology,Medium
+What is sickle cell disease?,WHO,Sickle Cell Disease,Hematology,Easy
+What are the symptoms of sickle cell disease?,WHO,Sickle Cell Disease,Hematology,Medium
+How is sickle cell disease managed?,WHO,Sickle Cell Disease,Hematology,Hard
+What are the warning signs of severe allergic reactions?,WHO,Anaphylaxis,Emergency,Hard
+How should an unconscious patient be assessed initially?,WHO,Emergency Assessment,Emergency,Hard
+What are the common causes of abdominal pain?,WHO,Abdominal Pain,Emergency,Medium
+When should abdominal pain be considered a medical emergency?,WHO,Abdominal Pain,Emergency,Hard
+What are the symptoms of appendicitis?,WHO,Appendicitis,Emergency,Medium
+How is appendicitis diagnosed?,WHO,Appendicitis,Emergency,Hard
+What are the symptoms of dehydration in adults?,WHO,Dehydration,Emergency,Medium
+How should dehydration in adults be treated?,WHO,Dehydration,Emergency,Medium
+What are the symptoms of food poisoning?,WHO,Food Poisoning,Infectious Diseases,Easy
+How is food poisoning treated?,WHO,Food Poisoning,Infectious Diseases,Medium
+When should a patient with food poisoning seek emergency care?,WHO,Food Poisoning,Infectious Diseases,Hard
+What are the principles of evidence-based clinical decision making?,WHO,Clinical Decision Making,General Medicine,Hard
+How should trusted medical guidelines be selected for patient care?,WHO,Clinical Guidelines,General Medicine,Hard
+What are the symptoms of dehydration in older adults?,WHO,Dehydration,Geriatrics,Medium
+How is dehydration prevented in older adults?,WHO,Dehydration,Geriatrics,Medium
+What are the symptoms of osteoporosis?,WHO,Osteoporosis,Orthopedics,Easy
+How is osteoporosis diagnosed?,WHO,Osteoporosis,Orthopedics,Medium
+How is osteoporosis treated?,WHO,Osteoporosis,Orthopedics,Medium
+What lifestyle changes help prevent osteoporosis?,WHO,Osteoporosis,Orthopedics,Easy
+What are the symptoms of osteoarthritis?,WHO,Osteoarthritis,Orthopedics,Easy
+How is osteoarthritis managed?,WHO,Osteoarthritis,Orthopedics,Medium
+What are the symptoms of rheumatoid arthritis?,WHO,Rheumatoid Arthritis,Rheumatology,Medium
+How is rheumatoid arthritis diagnosed?,WHO,Rheumatoid Arthritis,Rheumatology,Hard
+How is rheumatoid arthritis treated?,WHO,Rheumatoid Arthritis,Rheumatology,Hard
+What are the symptoms of gout?,WHO,Gout,Rheumatology,Easy
+How is gout treated?,WHO,Gout,Rheumatology,Medium
+What foods increase the risk of gout?,WHO,Gout,Rheumatology,Medium
+What are the symptoms of urinary tract infection?,WHO,Urinary Tract Infection,Urology,Easy
+How is urinary tract infection diagnosed?,WHO,Urinary Tract Infection,Urology,Medium
+How is urinary tract infection treated?,WHO,Urinary Tract Infection,Urology,Medium
+What are the symptoms of kidney stones?,WHO,Kidney Stones,Urology,Medium
+How are kidney stones diagnosed?,WHO,Kidney Stones,Urology,Medium
+How can kidney stones be prevented?,WHO,Kidney Stones,Urology,Easy
+What is gastroesophageal reflux disease (GERD)?,WHO,GERD,Gastroenterology,Easy
+What are the symptoms of GERD?,WHO,GERD,Gastroenterology,Easy
+How is GERD diagnosed?,WHO,GERD,Gastroenterology,Medium
+How is GERD treated?,WHO,GERD,Gastroenterology,Medium
+What lifestyle changes help manage GERD?,WHO,GERD,Gastroenterology,Easy
+What is peptic ulcer disease?,WHO,Peptic Ulcer,Gastroenterology,Easy
+What are the symptoms of peptic ulcer disease?,WHO,Peptic Ulcer,Gastroenterology,Medium
+How is peptic ulcer disease diagnosed?,WHO,Peptic Ulcer,Gastroenterology,Medium
+How is peptic ulcer disease treated?,WHO,Peptic Ulcer,Gastroenterology,Hard
+What causes peptic ulcers?,WHO,Peptic Ulcer,Gastroenterology,Medium
+What is irritable bowel syndrome (IBS)?,WHO,IBS,Gastroenterology,Easy
+What are the symptoms of irritable bowel syndrome?,WHO,IBS,Gastroenterology,Medium
+How is irritable bowel syndrome managed?,WHO,IBS,Gastroenterology,Medium
+What is constipation?,WHO,Constipation,Gastroenterology,Easy
+How can constipation be prevented?,WHO,Constipation,Gastroenterology,Easy
+What are the symptoms of acute pancreatitis?,WHO,Pancreatitis,Gastroenterology,Hard
+How is acute pancreatitis treated?,WHO,Pancreatitis,Gastroenterology,Hard
+What are the symptoms of liver cirrhosis?,WHO,Liver Cirrhosis,Gastroenterology,Medium
+How is liver cirrhosis diagnosed?,WHO,Liver Cirrhosis,Gastroenterology,Hard
+How can chronic liver disease be prevented?,WHO,Liver Disease,Gastroenterology,Medium
+What is chronic kidney disease?,WHO,Chronic Kidney Disease,Nephrology,Easy
+What are the early symptoms of chronic kidney disease?,WHO,Chronic Kidney Disease,Nephrology,Medium
+How is chronic kidney disease diagnosed?,WHO,Chronic Kidney Disease,Nephrology,Medium
+How is chronic kidney disease treated?,WHO,Chronic Kidney Disease,Nephrology,Hard
+What are the risk factors for chronic kidney disease?,WHO,Chronic Kidney Disease,Nephrology,Medium
+What is acute kidney injury?,WHO,Acute Kidney Injury,Nephrology,Easy
+What are the symptoms of acute kidney injury?,WHO,Acute Kidney Injury,Nephrology,Medium
+How is acute kidney injury diagnosed?,WHO,Acute Kidney Injury,Nephrology,Medium
+How is acute kidney injury treated?,WHO,Acute Kidney Injury,Nephrology,Hard
+How can kidney disease be prevented?,WHO,Kidney Disease,Nephrology,Easy
+What is dialysis?,WHO,Kidney Failure,Nephrology,Easy
+When is dialysis recommended?,WHO,Kidney Failure,Nephrology,Hard
+What is nephrotic syndrome?,WHO,Nephrotic Syndrome,Nephrology,Medium
+What are the symptoms of nephrotic syndrome?,WHO,Nephrotic Syndrome,Nephrology,Medium
+How is nephrotic syndrome treated?,WHO,Nephrotic Syndrome,Nephrology,Hard
+What are the symptoms of glomerulonephritis?,WHO,Glomerulonephritis,Nephrology,Medium
+How is glomerulonephritis diagnosed?,WHO,Glomerulonephritis,Nephrology,Hard
+How is glomerulonephritis treated?,WHO,Glomerulonephritis,Nephrology,Hard
+What lifestyle changes support kidney health?,WHO,Kidney Health,Nephrology,Easy
+How can high blood pressure affect kidney function?,WHO,Hypertension,Nephrology,Medium
+What is preventive healthcare?,WHO,Preventive Medicine,General Medicine,Easy
+Why are regular health check-ups important?,WHO,Preventive Medicine,General Medicine,Easy
+What are the benefits of routine vaccination?,WHO,Vaccination,Preventive Medicine,Easy
+How can lifestyle changes reduce chronic disease risk?,WHO,Preventive Medicine,General Medicine,Medium
+What are the components of a healthy diet?,WHO,Nutrition,Preventive Medicine,Easy
+How much physical activity is recommended for adults?,WHO,Physical Activity,Preventive Medicine,Easy
+Why is smoking cessation important for overall health?,WHO,Smoking Cessation,Preventive Medicine,Medium
+How does excessive alcohol consumption affect health?,WHO,Alcohol Use,Preventive Medicine,Medium
+How can obesity be prevented?,WHO,Obesity,Preventive Medicine,Medium
+What is body mass index (BMI) and how is it used?,WHO,Obesity,Preventive Medicine,Easy
+Why is adequate sleep important for health?,WHO,Sleep Health,Preventive Medicine,Easy
+How can stress affect physical health?,WHO,Stress Management,General Medicine,Medium
+What are the warning signs that require immediate medical attention?,WHO,Emergency Warning Signs,General Medicine,Hard
+How should medications be stored safely at home?,WHO,Medication Safety,General Medicine,Easy
+Why is medication adherence important?,WHO,Medication Safety,General Medicine,Medium
+What are the principles of infection prevention in healthcare settings?,WHO,Infection Prevention,General Medicine,Medium
+How should hand hygiene be performed correctly?,WHO,Hand Hygiene,General Medicine,Easy
+When should patients seek a second medical opinion?,WHO,Patient Safety,General Medicine,Medium
+How should chronic diseases be monitored over time?,WHO,Chronic Disease Management,General Medicine,Medium
+How should evidence-based medical guidelines be applied in clinical practice?,WHO,Evidence-Based Medicine,General Medicine,Hard
