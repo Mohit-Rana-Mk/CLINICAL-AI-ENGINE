@@ -1,53 +1,43 @@
 import logging
-from datetime import datetime
-from typing import Any
-
 
 logger = logging.getLogger(__name__)
 
 
 class DecisionTrace:
-    """
-    Clinical Decision Trace.
 
-    Records every major decision taken by the
-    Clinical AI pipeline.
-
-    Future:
-    - Graph visualization
-    - Explainable AI dashboard
-    - Clinical reasoning timeline
-    """
-
-    def __init__(self):
-
-        self._steps: list[dict[str, Any]] = []
-
-    def add_step(
+    def build(
         self,
-        stage: str,
-        details: Any,
-    ) -> None:
+        entities,
+        agents,
+        risk,
+    ):
 
-        self._steps.append(
+        logger.info("Building decision trace")
+
+        return [
             {
-                "timestamp": datetime.utcnow().isoformat(),
-                "stage": stage,
-                "details": details,
-            }
-        )
-
-    def build(self) -> list[dict[str, Any]]:
-
-        return self._steps
-
-    def clear(self) -> None:
-
-        self._steps.clear()
-
-    def statistics(self) -> dict:
-
-        return {
-            "total_steps": len(self._steps),
-            "generated_at": datetime.utcnow().isoformat(),
-        }
+                "step": 1,
+                "module": "Entity Extraction",
+                "status": "completed",
+            },
+            {
+                "step": 2,
+                "module": "Risk Engine",
+                "status": "completed",
+                "risk": getattr(
+                    risk,
+                    "overall_risk",
+                    "Unknown",
+                ),
+            },
+            {
+                "step": 3,
+                "module": "Diagnosis Agent",
+                "status": "completed",
+            },
+            {
+                "step": 4,
+                "module": "Recommendation Agent",
+                "status": "completed",
+            },
+        ]

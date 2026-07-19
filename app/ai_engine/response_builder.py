@@ -48,6 +48,7 @@ class ResponseBuilder:
         confidence,
         rag_result,
         follow_up=None,
+        vision=None,
     ):
 
         logger.info(
@@ -123,6 +124,16 @@ class ResponseBuilder:
 
             },
 
+            "vision": self._serialize(
+                vision
+            ),
+
+            "image_analysis": self._serialize(
+                vision.get("image_analysis", {})
+                if vision
+                else {}
+            ),
+
             "emergency":
                 self._serialize(
                     agents.get(
@@ -189,6 +200,12 @@ class ResponseBuilder:
                         )
                     ),
             },
+
+            "reasoning": {},
+
+            "decision_trace": [],
+
+            "audit": {},
         }
 
         logger.info(
