@@ -1,7 +1,6 @@
-Medicine,Category,Uses
-Metformin,Antidiabetic,Used to control blood sugar in type 2 diabetes.
-Amlodipine,Antihypertensive,Used to treat high blood pressure.
-Salbutamol,Bronchodilator,Relieves asthma symptoms.
-Paracetamol,Analgesic/Antipyretic,Used for pain relief and fever.
-Ibuprofen,NSAID,Used to reduce pain and inflammation.
-Tranexamic Acid,Hemostatic,Used to reduce heavy menstrual bleeding.
+Medicine Name,Generic Name,Brand Name,Dose,Frequency,Route,Side Effects,Contraindications,Drug Interactions,Pregnancy Safety,Storage,Reference
+Paracetamol,Acetaminophen,Crocin/Calpol,500 mg,Every 6-8 hours,Oral,Nausea; Rash,Severe liver disease,Warfarin,Generally Safe at recommended doses,Store below 25°C,WHO Essential Medicines List
+Amoxicillin,Amoxicillin,Amoxil,500 mg,Every 8 hours,Oral,Diarrhea; Rash,Penicillin allergy,Warfarin; Methotrexate,Use only if prescribed,Store below 25°C,FDA
+Metformin,Metformin,Glycomet,500 mg,Twice daily,Oral,Nausea; Diarrhea,Severe kidney disease,Alcohol; Contrast dye,Consult doctor,Store below 30°C,ADA
+Amlodipine,Amlodipine,Norvasc,5 mg,Once daily,Oral,Swelling; Dizziness,Severe hypotension,Simvastatin,Consult doctor,Store at room temperature,NICE
+Ibuprofen,Ibuprofen,Brufen,400 mg,Every 6-8 hours,Oral,Stomach upset; Bleeding,Peptic ulcer; Kidney disease,Aspirin; Warfarin,Avoid in third trimester,Store below 25°C,WHO
