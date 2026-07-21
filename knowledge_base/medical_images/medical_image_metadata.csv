@@ -1,0 +1,13 @@
+filename,category,source,format
+acne1.jpg,skin,Kaggle,jpg
+eczema1.jpg,skin,Kaggle,jpg
+psoriasis1.jpg,skin,Kaggle,jpg
+cataract1.jpg,eye,Kaggle,jpg
+glaucoma1.jpg,eye,Kaggle,jpg
+prescription1.jpg,prescription,Kaggle,jpg
+prescription2.jpg,prescription,Kaggle,jpg
+blood_report1.jpg,lab_reports,Kaggle,jpg
+cbc_report1.jpg,lab_reports,Kaggle,jpg
+burn1.jpg,wound,Kaggle,jpg
+cut1.jpg,wound,Kaggle,jpg
+diabetic_ulcer1.jpg,wound,Kaggle,jpg

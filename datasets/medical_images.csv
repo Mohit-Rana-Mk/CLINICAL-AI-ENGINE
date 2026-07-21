@@ -1,0 +1,16 @@
+Image_ID,Disease,Category,Body_Part,Severity,Source,License,Resolution,Annotation_Status
+IMG001,Eczema,skin,Skin,Mild,WHO,Public,1024x768,Annotated
+IMG002,Psoriasis,skin,Skin,Moderate,NICE,Public,1280x720,Annotated
+IMG003,Diabetic Retinopathy,eye,Eye,Severe,WHO,Public,1920x1080,Annotated
+IMG004,Cataract,eye,Eye,Moderate,CDC,Public,1280x720,Annotated
+IMG005,Oral Thrush,tongue,Tongue,Mild,WHO,Public,1024x768,Annotated
+IMG006,Tongue Ulcer,tongue,Tongue,Moderate,NICE,Public,1024x768,Pending
+IMG007,Burn Injury,wound,Skin,Severe,WHO,Public,1600x900,Annotated
+IMG008,Diabetic Foot,wound,Foot,Severe,CDC,Public,1920x1080,Annotated
+IMG009,Pneumonia,xray,Lungs,Severe,NIH,Public,2048x2048,Annotated
+IMG010,Fracture,xray,Bone,Moderate,WHO,Public,2048x2048,Annotated
+IMG011,Normal ECG,ecg,Heart,None,AHA,Public,1024x768,Annotated
+IMG012,Atrial Fibrillation,ecg,Heart,High,AHA,Public,1024x768,Annotated
+IMG013,Prescription Sample,prescription,Document,None,Synthetic,Internal,800x1200,Annotated
+IMG014,CBC Report,lab_reports,Document,None,Synthetic,Internal,1200x1600,Annotated
+IMG015,Liver Function Report,lab_reports,Document,None,Synthetic,Internal,1200x1600,Pending

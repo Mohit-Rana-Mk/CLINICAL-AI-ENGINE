@@ -2,6 +2,7 @@ import logging
 
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
+from sqlalchemy.orm import sessionmaker
 
 from app.core.config import settings
 
@@ -41,6 +42,20 @@ engine = create_engine(
     pool_reset_on_return="rollback",
 
 )
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine,
+)
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+        
 
 logger.info(
     "Database engine initialized successfully."

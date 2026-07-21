@@ -4,11 +4,19 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
+from app.api.routes import medicines as medicines_router
 
 from app.ai_engine.orchestrator import ClinicalAIEngine
 from app.database.connection import engine
 from app.schemas.ai_response import AIResponse
 from app.api.routes import nlp as nlp_router
+from app.api.routes import knowledge as knowledge_router
+from app.api.routes import medical_images as medical_images_router
+from app.api.routes import analytics as analytics_router
+from app.api.routes import diseases as diseases_router
+from app.api.routes import lab_reference as lab_reference_router
+from app.api.routes import guidelines as guidelines_router
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -42,6 +50,13 @@ Features
 
 # ── NLP Engine Routes (Richa's pipeline) ──────────────────────────────────────
 app.include_router(nlp_router.router)
+app.include_router(knowledge_router.router)
+app.include_router(medical_images_router.router)
+app.include_router(analytics_router.router)
+app.include_router(diseases_router.router)
+app.include_router(medicines_router.router)
+app.include_router(lab_reference_router.router)
+app.include_router(guidelines_router.router)
 
 ai_engine = ClinicalAIEngine()
 
