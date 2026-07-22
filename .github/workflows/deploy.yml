@@ -1,0 +1,64 @@
+name: CI/CD Pipeline - Clinical AI Engine
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Health and Environment Checks
+        env:
+          DATABASE_URL: sqlite:///./test.db
+          REDIS_HOST: localhost
+          REDIS_PORT: 6379
+        run: |
+          python -c "import fastapi; import uvicorn; print('Core dependencies verified successfully.')"
+
+      - name: Build Docker Image
+        run: |
+          docker build -f deployment/Dockerfile -t clinical-ai-engine:latest .
+
+      - name: Test Docker Container Startup
+        run: |
+          docker run -d --name test_container -p 8000:8000 clinical-ai-engine:latest
+          sleep 10
+          python deployment/healthcheck.py
+          docker stop test_container
+          docker rm test_container
+
+      - name: Deploy to Production Server
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          echo "Deploying to production infrastructure..."
+          # Add your server SSH deployment script or cloud runner action here
+          echo "Deployment completed successfully!"

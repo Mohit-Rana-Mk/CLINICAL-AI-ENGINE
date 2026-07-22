@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  # ==========================================================
+  # FastAPI Clinical AI Engine Microservice
+  # ==========================================================
+  ai_engine:
+    build:
+      context: .
+      dockerfile: deployment/Dockerfile
+    container_name: clinical_ai_engine
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - QDRANT_HOST=qdrant
+      - QDRANT_PORT=6333
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - DATABASE_URL=sqlite:///./app.db
+    env_file:
+      - deployment/.env.production
+    depends_on:
+      - qdrant
+      - redis
+    networks:
+      - clinical_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ==========================================================
+  # Qdrant Vector Database (For RAG Medical Knowledge)
+  # ==========================================================
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: clinical_qdrant
+    restart: always
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    networks:
+      - clinical_net
+
+  # ==========================================================
+  # Redis Cache & Session Store
+  # ==========================================================
+  redis:
+    image: redis:7-alpine
+    container_name: clinical_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - clinical_net
+
+  # ==========================================================
+  # Nginx Reverse Proxy / Load Balancer
+  # ==========================================================
+  nginx:
+    image: nginx:alpine
+    container_name: clinical_nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deployment/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - ai_engine
+    networks:
+      - clinical_net
+
+volumes:
+  qdrant_storage:
+
+networks:
+  clinical_net:
+    driver: bridge

@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.runtime/
+
+# Environment Variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# VS Code
+.vscode/
+
+# Pytest
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Alembic Cache
+alembic/versions/__pycache__/
+
+# Temporary
+*.tmp
+*.bak
+
+# Documentation folder
+documentation
+
+# ML Models & Datasets (large binary/data files)
+models/
+datasets/
+*.bin
+*.ftz
+
+# Media & Test Files (Audio/Images)
+*.wav
+*.png
+
+# Sample files
+sample_report.pdf
+run_on_report.py
+demo_all.bat
