@@ -1,6 +1,5 @@
 import logging
 import time
-from datetime import datetime
 
 from app.ai_engine.agents.coordinator import AgentCoordinator
 from app.ai_engine.confidence_engine import ConfidenceEngine
@@ -17,6 +16,11 @@ from app.ai_engine.rag.rag_service import RAGService
 from app.ai_engine.response_builder import ResponseBuilder
 from app.ai_engine.risk_engine import RiskEngine
 from app.ai_engine.summary_engine import ClinicalSummaryGenerator
+from app.ai_engine.vision.vision_pipeline import VisionPipeline
+from app.ai_engine.vision.vision_response import VisionResponseBuilder
+from app.ai_engine.explainability.reasoning_engine import ReasoningEngine
+from app.ai_engine.explainability.decision_trace import DecisionTrace
+from app.ai_engine.explainability.audit_logger import AuditLogger
 
 logger = logging.getLogger(__name__)
 
@@ -57,19 +61,22 @@ class ClinicalPipeline:
         self.explainability_engine = ExplainabilityEngine()
         self.summary_engine = ClinicalSummaryGenerator()
         self.confidence_engine = ConfidenceEngine()
-
         self.patient_memory = PatientMemory()
         self.conversation_memory = ConversationMemory()
         self.timeline_builder = TimelineBuilder()
-
         self.personalization_engine = PersonalizationEngine()
-
         self.response_builder = ResponseBuilder()
+        self.vision_pipeline = VisionPipeline()
+        self.vision_response = VisionResponseBuilder()
+        self.reasoning_engine = ReasoningEngine()
+        self.decision_trace = DecisionTrace()
+        self.audit_logger = AuditLogger()
 
     def run(
         self,
-        message: str,
+        message: str | None = None,
         patient_id: int | None = None,
+        image_path: str | None = None,
     ):
 
         start = time.perf_counter()
@@ -80,11 +87,13 @@ class ClinicalPipeline:
                 "========== Clinical AI Pipeline Started =========="
             )
 
-            if not message or not message.strip():
-
+            if (
+                (message is None or not str(message).strip())
+                and image_path is None
+            ):
                 return {
                     "status": "error",
-                    "message": "Clinical message cannot be empty.",
+                    "message": "Either message or image is required.",
                 }
 
             # -------------------------------------------------
@@ -97,6 +106,23 @@ class ClinicalPipeline:
                 patient_id
             )
 
+            vision_result = {
+                "status": "not_requested",
+                "image_analysis": {},
+            }
+            if image_path:
+
+                logger.info("Running Vision Pipeline")
+
+                pipeline_result = self.vision_pipeline.process(
+                    image_path=image_path,
+                )
+
+                vision_result = self.vision_response.build(
+                    pipeline_result,
+                    )
+
+
             # -------------------------------------------------
             # 2. Conversation Memory
             # -------------------------------------------------
@@ -106,7 +132,7 @@ class ClinicalPipeline:
             self.conversation_memory.add_message(
                 patient_id=patient_id,
                 role="patient",
-                message=message,
+                message=message if message else "[Image Uploaded]",
             )
 
             conversation_history = (
@@ -134,7 +160,7 @@ class ClinicalPipeline:
             logger.info("[4/15] Extracting medical entities")
 
             entities = self.entity_extractor.extract(
-                message
+                message or ""
             )
 
             # -------------------------------------------------
@@ -155,7 +181,7 @@ class ClinicalPipeline:
             logger.info("[6/15] Retrieving medical evidence")
 
             rag_result = self.rag_service.process(
-                query=message,
+                query=message or "",
                 patient_context=patient_context,
                 emergency_status=None,
                 risk_assessment=risk,
@@ -168,7 +194,7 @@ class ClinicalPipeline:
             logger.info("[7/15] Running clinical agents")
 
             agents = self.agent_coordinator.run(
-                message=message,
+                message=message or "",
                 patient_context=patient_context,
                 entities=entities,
                 rag_result=rag_result,
@@ -223,7 +249,26 @@ class ClinicalPipeline:
                 rag_result.get("documents", []),
             )
 
-                        # -------------------------------------------------
+            reasoning = self.reasoning_engine.generate(
+                entities,
+                risk,
+                agents,
+                rag_result,
+            )
+
+            decision_trace = self.decision_trace.build(
+                entities,
+                agents,
+                risk,
+            )
+
+            audit = self.audit_logger.log(
+                patient_id,
+                entities,
+                risk,
+            )
+            
+            # -------------------------------------------------
             # 12. Update Patient Memory
             # -------------------------------------------------
 
@@ -316,6 +361,7 @@ class ClinicalPipeline:
                 confidence=confidence,
                 rag_result=rag_result,
                 follow_up=follow_up,
+                vision=vision_result,
             )
 
             response["patient_profile"] = (
@@ -344,7 +390,7 @@ class ClinicalPipeline:
             )
 
             response["pipeline"] = {
-                "version": "2.0",
+                "version": "3.0",
                 "engine": "Clinical AI Engine",
                 "steps_completed": 15,
                 "execution_time_seconds": round(
@@ -357,6 +403,12 @@ class ClinicalPipeline:
                 "Clinical AI Pipeline completed successfully in %.3fs",
                 time.perf_counter() - start,
             )
+
+            response["reasoning"] = reasoning
+
+            response["decision_trace"] = decision_trace
+
+            response["audit"] = audit
 
             return response
 

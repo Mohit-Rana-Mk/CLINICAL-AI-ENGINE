@@ -204,6 +204,62 @@ class ConfidenceResult(BaseModel):
 
 
 # ==========================================================
+# Vision AI
+# ==========================================================
+
+class ImageMetadata(BaseModel):
+
+    filename: str
+
+    format: Optional[str] = None
+
+    width: int
+
+    height: int
+
+    mode: str
+
+    size_kb: float
+
+
+class ImageClassification(BaseModel):
+
+    category: str
+
+    model: str
+
+    confidence: float
+
+    status: str
+
+
+class ImageAnalysis(BaseModel):
+
+    category: str
+
+    model: str
+
+    prediction: str
+
+    recommendation: str
+
+    urgency: str
+
+    confidence: float
+
+
+class VisionResult(BaseModel):
+
+    status: str
+
+    image_analysis: Optional[ImageAnalysis] = None
+
+    metadata: Optional[ImageMetadata] = None
+
+    error: Optional[str] = None
+
+
+# ==========================================================
 # Final API Response
 # ==========================================================
 
@@ -238,3 +294,7 @@ class ClinicalAIResponse(BaseModel):
     pipeline: Dict[str, Any] = Field(default_factory=dict)
 
     timestamp: Optional[str] = None
+
+    image_analysis: Dict[str, Any] = Field(default_factory=dict)
+
+    vision: Dict[str, Any] = Field(default_factory=dict)
