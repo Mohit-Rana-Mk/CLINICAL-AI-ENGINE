@@ -1,5 +1,9 @@
 # Clinical AI Engine
 
+<p align="center">
+  <img src="architecture.png" alt="Clinical AI Engine Architecture" width="70%" style="max-height: 150px; object-fit: contain;" />
+</p>
+
 A production-oriented Clinical Decision Support System designed to power intelligent healthcare applications through explainable artificial intelligence, modular clinical reasoning, retrieval-augmented generation, multi-agent frameworks, and scalable backend architecture.
 
 Clinical AI Engine serves as the core intelligence layer behind HealTrack and has evolved from a rule-based reasoning engine into a multimodal, retrieval-augmented, enterprise-ready clinical AI platform.
