@@ -48,11 +48,11 @@ jobs:
         run: |
           docker build -f deployment/Dockerfile -t clinical-ai-engine:latest .
 
-      - name: Test Docker Container Startup
+      - name: Start Docker Container for Testing
         env:
           DATABASE_URL: sqlite:///./test.db
           REDIS_HOST: 172.17.0.1
-          REDIS_PORT: 6379
+          REDIS_PORT: "6379"
         run: |
           docker run -d \
             --name test_container \
@@ -62,15 +62,19 @@ jobs:
             -e REDIS_HOST="172.17.0.1" \
             -e REDIS_PORT="6379" \
             clinical-ai-engine:latest
-          
-          echo "Waiting for container and ML models to initialize..."
-          sleep 20
-          
+
+      - name: Run Health Check Script
+        run: |
           python deployment/healthcheck.py
-          
-          docker logs test_container
-          docker stop test_container
-          docker rm test_container
+
+      - name: Cleanup and Dump Logs on Completion
+        if: always()
+        run: |
+          echo "Dumping container logs for diagnostics..."
+          docker logs test_container || true
+          echo "Stopping and removing test container..."
+          docker stop test_container || true
+          docker rm test_container || true
 
       - name: Deploy to Production Server
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
