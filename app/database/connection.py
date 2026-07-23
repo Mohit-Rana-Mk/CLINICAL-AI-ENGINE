@@ -2,6 +2,7 @@ import logging
 
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
+from sqlalchemy.orm import sessionmaker
 
 from app.core.config import settings
 
@@ -21,26 +22,31 @@ logger.info(
 )
 
 engine = create_engine(
-
     DATABASE_URL,
-
     echo=settings.DEBUG,
-
     future=True,
-
     pool_pre_ping=True,
-
     pool_recycle=3600,
-
     pool_size=10,
-
     max_overflow=20,
-
     pool_timeout=30,
-
     pool_reset_on_return="rollback",
-
 )
+
+SessionLocal = sessionmaker(
+    autocommit=False,
+    autoflush=False,
+    bind=engine,
+    future=True,
+)
+
+def get_db():
+    """Dependency generator that yields a database session per request."""
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 logger.info(
     "Database engine initialized successfully."

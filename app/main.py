@@ -12,7 +12,16 @@ from sqlalchemy.exc import SQLAlchemyError
 from app.ai_engine.orchestrator import ClinicalAIEngine
 from app.database.connection import engine
 from app.schemas.ai_response import AIResponse
-from app.api.routes import nlp as nlp_router
+from app.api.routes import (
+    nlp as nlp_router,
+    analytics as analytics_router,
+    diseases as diseases_router,
+    guidelines as guidelines_router,
+    knowledge as knowledge_router,
+    lab_reference as lab_reference_router,
+    medical_images as medical_images_router,
+    medicines as medicines_router,
+)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -28,7 +37,7 @@ app = FastAPI(
 
 The HealTrack Clinical AI Engine combines deterministic medical protocols (WHO, NICE) with state-of-the-art NLP, RAG, and Multi-Agent reasoning to assist healthcare providers and power intelligent chatbot experiences.
 
-#### 🚀 Core Capabilities
+#### Core Capabilities
 * **Multimodal Intelligence:** Automated routing and parsing for Text, Voice (.wav/.mp3), Medical Images (Skin, Eye, X-Ray), and Clinical Documents (Prescriptions/Lab Reports via PaddleOCR).
 * **Evidence-Based RAG:** Semantic vector retrieval powered by Qdrant, referencing trusted global medical guidelines.
 * **Longitudinal Memory:** Patient-specific profile tracking, multi-turn conversation history, and clinical timelines.
@@ -55,14 +64,25 @@ The HealTrack Clinical AI Engine combines deterministic medical protocols (WHO, 
             "description": "Longitudinal patient data retrieval including chat history, clinical timelines, and summaries."
         },
         {
+            "name": "Medical Knowledge Platform",
+            "description": "Curated database access for diseases, medicines, lab references, guidelines, and analytics."
+        },
+        {
             "name": "NLP Subsystem",
             "description": "Dedicated microservice routes for Richa's multilingual NLP pipeline and translation."
         }
     ]
 )
 
-# ── NLP Engine Routes (Richa's pipeline) ──────────────────────────────────────
+# ── Include Subsystem & Knowledge Platform Routers ───────────────────────────
 app.include_router(nlp_router.router)
+app.include_router(analytics_router.router)
+app.include_router(diseases_router.router)
+app.include_router(guidelines_router.router)
+app.include_router(knowledge_router.router)
+app.include_router(lab_reference_router.router)
+app.include_router(medical_images_router.router)
+app.include_router(medicines_router.router)
 
 ai_engine = ClinicalAIEngine()
 
