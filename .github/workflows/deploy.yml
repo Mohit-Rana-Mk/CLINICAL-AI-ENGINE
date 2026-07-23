@@ -51,19 +51,20 @@ jobs:
       - name: Test Docker Container Startup
         env:
           DATABASE_URL: sqlite:///./test.db
-          REDIS_HOST: host.docker.internal
+          REDIS_HOST: 172.17.0.1
           REDIS_PORT: 6379
         run: |
           docker run -d \
             --name test_container \
+            --add-host=host.docker.internal:host-gateway \
             -p 8000:8000 \
             -e DATABASE_URL="sqlite:///./test.db" \
-            -e REDIS_HOST="host.docker.internal" \
+            -e REDIS_HOST="172.17.0.1" \
             -e REDIS_PORT="6379" \
             clinical-ai-engine:latest
           
           echo "Waiting for container and ML models to initialize..."
-          sleep 15
+          sleep 20
           
           python deployment/healthcheck.py
           
