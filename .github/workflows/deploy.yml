@@ -49,10 +49,25 @@ jobs:
           docker build -f deployment/Dockerfile -t clinical-ai-engine:latest .
 
       - name: Test Docker Container Startup
+        env:
+          DATABASE_URL: sqlite:///./test.db
+          REDIS_HOST: host.docker.internal
+          REDIS_PORT: 6379
         run: |
-          docker run -d --name test_container -p 8000:8000 clinical-ai-engine:latest
-          sleep 10
+          docker run -d \
+            --name test_container \
+            -p 8000:8000 \
+            -e DATABASE_URL="sqlite:///./test.db" \
+            -e REDIS_HOST="host.docker.internal" \
+            -e REDIS_PORT="6379" \
+            clinical-ai-engine:latest
+          
+          echo "Waiting for container and ML models to initialize..."
+          sleep 15
+          
           python deployment/healthcheck.py
+          
+          docker logs test_container
           docker stop test_container
           docker rm test_container
 
